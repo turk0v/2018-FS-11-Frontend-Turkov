@@ -1,0 +1,7 @@
+.text_div{
+    position:absolute;
+    text-align:center;
+    width:200px;
+    height:100px;
+    background-color:green;
+}
