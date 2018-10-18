@@ -1,7 +1,8 @@
 input {
 	border: 0;
-	outline: none;
-	width: calc(100% - 2px);
+	display: flex;
+	flex-direction: column;
+	background: #ffffff;
 }
 
 :host {
