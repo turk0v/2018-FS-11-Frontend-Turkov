@@ -1,14 +1,25 @@
-form-input {
-	display: flex;
-	flex-direction: column;
-	padding: 10px 15px 15px 15px;
+.form-input {
+    display: inline-flex;
+    justify-content: space-around;
+    flex-basis: 10%;
+    width: 100%;
+    background: white;
+}
+
+form {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    justify-content: space-between;
+    align-items: stretch;
+    background: #f0f0f0;
 }
 
 .result {
-	color: red;
+	color: black;
+    font-size: 3vh;
 }
 
 input[type=submit] {
 	visibility: collapse;
-	padding: 10px 15px 15px 15px;
 }

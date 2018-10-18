@@ -1,8 +1,18 @@
 input {
-	border: 0;
-	display: flex;
-	flex-direction: column;
-	background: #ffffff;
+	border: 0px;
+	outline: none;
+    flex-basis: 80%;
+    height: 40%;
+    align-self: center;
+}
+
+button {
+    height: 50%;
+    align-self: center;
+}
+
+input, button {
+    font-size: 30px;
 }
 
 :host {
