@@ -1,25 +1,35 @@
-.form-input {
-    display: inline-flex;
-    justify-content: space-around;
-    flex-basis: 10%;
-    width: 100%;
-    background: white;
+div[slot=after] > button {
+	outline: none;
+	display: inline-block;
+	font: inherit;
+	box-sizing: content-box;
+	padding: 0;
+	margin: 0 5px;
+	border: 0;
 }
 
-form {
-    display: flex;
-    flex-flow: column;
-    height: 100vh;
-    justify-content: space-between;
-    align-items: stretch;
-    background: #f0f0f0;
+div[slot=after] > * {
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	background: #f0f0f0;
+	overflow: hidden;
 }
 
-.result {
-	color: black;
-    font-size: 3vh;
+div[slot=after] > button[type=submit] {
+	display: none;
 }
 
-input[type=submit] {
-	visibility: collapse;
+.with-message div[slot=after] > button[type=submit] {
+	display: block;
+}
+
+div[slot=after] {
+	display: flex;
+	justify-content: space-around;
+}
+
+div[slot=after] > *:nth-child(0) {
+	margin: 0 0 0 5px;
 }
