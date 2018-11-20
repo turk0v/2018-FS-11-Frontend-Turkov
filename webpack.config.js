@@ -12,6 +12,10 @@ module.exports = {
 		//publicPath: '/static/',
 		filename: '[name]/bundle.js'
 	},
+	devServer: {
+	     contentBase: './dist'
+	},
+	devtool: 'inline-source-map',
 	module: {
 		rules: [
 			{
@@ -27,6 +31,11 @@ module.exports = {
 				use: {
 					loader: 'css-loader'
 				}
+			},
+			{
+
+    			test: /\.(jpe?g|png|gif|svg)$/i, 
+    			loader: "file-loader?name=/public/icons/[name].[ext]"
 			},
 			{
 				test: /index\.css$/,

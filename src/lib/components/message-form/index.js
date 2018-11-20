@@ -1,69 +1,100 @@
-//import styles from './index.css';
 import shadowStyles from './shadow.css';
-
-const slotName = 'message-input';
+import FormInput from '../form/-input';
+import GeoInput from '../form/-geo-input';
+import FileInput from '../form/-file-input';
+import DragNDrop from '../form/drag-n-drop/';
 
 const template = `
 	<style>${shadowStyles.toString()}</style>
 	<form>
-		<div class="result"></div>
-		<form-input class="form-input" name="message_text" placeholder="Отправить сообщение" slot="message-input">
-			<span slot="icon"></span>
+		<form-input name="message_text" placeholder="Введите сообщение" slot="message-input">
+			<div slot="before">
+			</div>
+			<div slot="after">
+				<file-input></file-input>
+				<button type="submit">Send</button>
+			</div>
 		</form-input>
+		<geo-input name="message-pos"></geo-input>
 	</form>
 `;
 
+const stateClasses = {
+	withMessage: 'with-message'
+};
+
 class MessageForm extends HTMLElement {
-    constructor() {
-        super();
-        const shadowRoot = this.attachShadow({ mode: 'open' });
-        shadowRoot.innerHTML = template;
-        this._initElements();
-        this._addHandlers();
-    }
+	constructor () {
+		super();
+		const shadowRoot = this.attachShadow({mode: 'open'});
+		shadowRoot.innerHTML = template;
+		this._initElements();
+		this._addHandlers();
+	}
 
-    static get observedAttributes() {
-        return [
-            'action',
-            'method',
-        ];
-    }
+	_initElements () {
+		var form = this.shadowRoot.querySelector('form');
+		var message = this.shadowRoot.querySelector('form-input');
+		var fileInput = this.shadowRoot.querySelector('file-input');
+		this._elements = {
+			form: form,
+			message: message,
+			file: fileInput
+		};
+	}
 
-    attributeChangedCallback(attrName, oldVal, newVal) {
-        this._elements.form[attrName] = newVal;
-    }
+	_addHandlers () {
+		this._elements.form.addEventListener('submit', this._onSubmit.bind(this));
+		this._elements.message.addEventListener('input', this._onInput.bind(this));
+		this._elements.form.addEventListener('keypress', this._onKeyPress.bind(this));
+		this._elements.file.addEventListener('change', this._onFileChange.bind(this))
+	}
 
-    _initElements() {
-        const form = this.shadowRoot.querySelector('form');
-        const form_input = this.shadowRoot.querySelector('.form-input');
-        const message = this.shadowRoot.querySelector('.result');
-        this._elements = {
-            form,
-            form_input,
-            message,
-        };
-    }
+	_onSubmit (event) {
+		const message = {
+			text: this._elements.message.value,
+			time: new Date(),
+			my: true
+		};
+		this._elements.message.value = '';
+		this._elements.form.classList.remove(stateClasses.withMessage);
+		const messageEvent = new CustomEvent('new-message', {
+			bubbles: false,
+			detail: message
+		});
+		this.dispatchEvent(messageEvent);
+		event.preventDefault();
+	}
 
-    _addHandlers() {
-        this._elements.form.addEventListener('submit', this._onSubmit.bind(this));
-        this._elements.form.addEventListener('keypress', this._onKeyPress.bind(this));
-        // this._elements.inputSlot.addEventListener('slotchange', this._onSlotChange.bind(this));
-    }
+	_onKeyPress (event) {
+		if (event.keyCode == 13) {
+			this._elements.form.dispatchEvent(new Event('submit'));
+		}
+	}
 
-    _onSubmit(event) {
-        this._elements.message.innerText = Array.from(this._elements.form.elements).map(
-            el => el.value,
-        ).join(', ');
-        this._elements.form_input._elements.input.value = "";
-        event.preventDefault();
-        return false;
-    }
+	_onInput () {
+		if (this._elements.message.value.length > 0) {
+			this._elements.form.classList.add(stateClasses.withMessage);
+		} else {
+			this._elements.form.classList.remove(stateClasses.withMessage);
+		}
+	}
 
-    _onKeyPress(event) {
-        if (event.keyCode == 13) {
-            this._elements.form.dispatchEvent(new Event('submit'));
-        }
-    }
+	_onFileChange (event) {
+		const message = {
+			text: null,
+			time: new Date(),
+			my: true,
+			files: event.target.files
+		};
+		const messageEvent = new CustomEvent('new-message', {
+			bubbles: false,
+			detail: message
+		});
+		this.dispatchEvent(messageEvent);
+	}
 }
 
 customElements.define('message-form', MessageForm);
+
+export default MessageForm;
