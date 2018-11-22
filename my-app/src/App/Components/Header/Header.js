@@ -12,9 +12,9 @@ export default class Header extends Component {
 			<style>${shadowStyles.toString()}</style>
 			<img src={backArrow} id="back_img"></img>
 			<img src={userAvatar} id="user_avatar"></img>
-				<div class="senderInfo">
-	        		<div class="name">Jeniffer</div>
-	        		<div class="last_seen">was online just now</div>
+				<div className="senderInfo">
+	        		<div className="name">Jeniffer</div>
+	        		<div className="last_seen">was online just now</div>
 	    		</div>
 	    	<img src={menuButton} alt="Menu" id="menu_button"></img>
 	    	<img src={searchButton} alt="Search" id="search_button"></img>
