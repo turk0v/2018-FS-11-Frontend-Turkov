@@ -1,42 +1,43 @@
 .MessageForm {
     display: flex;
     flex-direction: row;
-    height: 10vh;
+    height: 24px;
     justify-content: center;
     align-items: center;
     padding: 2%;
+    /*overflow-y: auto;*/
 
 }
 
 .InputForm {
-    border: 1px solid lightgray;
-    width: 73vw;
-    font-size: 3.5vh;
-    font-family: "American Typewriter", serif;
-    border-radius: 5px;
-    height: 10vh;
-    margin-right: 2%;
+    width: 80vw;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 10px;
+    font-size: 16px;
+    height: 50px;
+    border:0;
+    outline: 0;
+    /*overflow-y: auto;*/
 }
 
 .SendButton {
-    width: 25vw;
-    height: 10vh;
-    border-radius: 3px;
-    font-size: 3vh;
-    font-family: "American Typewriter", serif;
-    border: 1px solid slategrey;
-    margin-left: 2%;
+    /*position: ab*/
+    display: flex;
+    margin-right: 35px; 
+    /*margin-right: 80px;*/
+    width: 60px;
+    height: 50px;
+    border-radius: 1px;
+    background: #f0f0f0;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid white;
 }
 
 .PinFileIcon {
+    display: flex;
     padding: 3px;
     max-height: 3vh;
-    position: absolute;
-    top: 0;
-    right: 2%;
-}
-.PinFileIcon:hover {
-    max-height: 8vh;
 }
 
 .FormAndPinButton {

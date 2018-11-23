@@ -45,7 +45,7 @@ export default class ChatWindow extends Component {
 	}
 	render() {
 		return (
-			<Aux>
+			<Aux overflow = 'auto'>
 				<MessageList message={this.state.message}/>
 				<MessageForm  dispatcher={this.handleMessage.bind(this)}/>
 			</Aux>
