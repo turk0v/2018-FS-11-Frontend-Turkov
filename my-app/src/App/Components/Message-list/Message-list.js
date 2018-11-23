@@ -27,6 +27,9 @@ export default class MessageList extends Component {
 		newMessage['file'] = messageGot.file;
 		this.state.push(newMessage);
 	}
+	getRandomInt(max) {
+	  return Math.floor(Math.random() * Math.floor(max));
+	}
 
   	render() {
   		let messageGot = { 
@@ -43,6 +46,7 @@ export default class MessageList extends Component {
   					this.state.map (
   					(value) =>		
 						<Message 
+						key = {this.getRandomInt(10000000)}
 						text = {value.text}
 						time = {value.time}
 						file = {value.file}

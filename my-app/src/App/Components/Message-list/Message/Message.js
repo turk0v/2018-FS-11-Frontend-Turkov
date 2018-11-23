@@ -1,4 +1,4 @@
-import shadowStyles from './shadow.css'
+import './shadow.css'
 import React, { Component } from 'react';
 
 

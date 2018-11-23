@@ -10,8 +10,8 @@ export default class Header extends Component {
 		return (
 			<div className = "header-user">
 			<style>${shadowStyles.toString()}</style>
-			<img src={backArrow} id="back_img"></img>
-			<img src={userAvatar} id="user_avatar"></img>
+			<img src={backArrow} id="back_img"  alt="back_img"></img>
+			<img src={userAvatar} id="user_avatar" alt="user_avatar"></img>
 				<div className="senderInfo">
 	        		<div className="name">Jeniffer</div>
 	        		<div className="last_seen">was online just now</div>
