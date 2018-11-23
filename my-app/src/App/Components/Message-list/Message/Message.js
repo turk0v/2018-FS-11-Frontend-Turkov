@@ -13,6 +13,7 @@ export default class Message extends Component {
 		this.time = props.time;
 		this.file = props.file;
 		this.spanText = props.spanText;
+		this.yourMessage = props.yourMessage;
 	}
 
 	attachment(sendObject) {
@@ -33,7 +34,7 @@ export default class Message extends Component {
 	
 	render() {
 		return (
-			<div className="Message">
+			<div className={!this.yourMessage ? "LeftMessageAttributes Message" : "Message"}>
 			{this.attachment(this.file)}
 			<p>{this.text}</p>
 			<time className="TimeLabel">{this.time}</time>

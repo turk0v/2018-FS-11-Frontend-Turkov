@@ -1,52 +1,57 @@
-  // possiible bug
 import React, { Component } from 'react';
 import './shadow.css';
 import Message from './Message/Message.js'
 
-const fakeMessage = [
-	{
-		text: "hello,",
-		time: new Date().toLocaleTimeString(),
-		spanText : 'Delivered',
-	},
-];
 
 export default class MessageList extends Component {
 	constructor() {
 		super();
-		this.state = {
-			// messages: fakeMessage[0],
-			text: "hello, man",
-			time: new Date().toLocaleTimeString(),
-			spanText : 'Delivered',
-		}
+		this.state = [
+			{
+				// idOfMessage : 1,
+				text: "hello, man",
+				time: new Date().toLocaleTimeString(),
+				spanText : 'v',
+				yourMessage : false,
+			},
+			
+		]
+		this.addNewMessage.bind(this);
+	}
+
+	addNewMessage(messageGot) {
+		var newMessage = {};
+		newMessage['text'] = messageGot.text;
+		newMessage['time'] = messageGot.time;
+		newMessage['spanText'] = messageGot.spanText;
+		newMessage['yourMessage'] = messageGot.yourMessage;
+		newMessage['file'] = messageGot.file;
+		this.state.push(newMessage);
 	}
 
   	render() {
-  		// this.props.message.push ({
-  		// 	text:this.props.message.text,
-  		// 	time:this.props.message.time,
-  		// 	file:this.props.message.file,
-  		// 	spanText:this.props.message.spanText,
-  		// });
-  		return (
-  			<div className="MessageList">
-  					<Message 
-  					// key = {this.state.}
-  					text = {this.state.text}
-  					time = {this.state.time}
-  					file = {this.state.file}
-  					spanText = {this.state.spanText}/>
-  			</div>
-  				// this.state.messages.map(
-  				// 	(value,index) =>
-  				// 		<Message 
-  				// 		key = {this.index}
-  				// 		text = {this.value.text}
-  				// 		time = {this.value.time}
-  				// 		file = {this.value.file}
-  				// 		spanText = {this.value.spanText}/>
-  				// 	)
-  		);
-  	}
+  		let messageGot = { 
+  			text : this.props.message.text,
+  			time : this.props.message.time,
+  			spanText : this.props.message.spanText,
+  			yourMessage : this.props.message.yourMessage,
+  			file : this.props.message.file,
+  		}
+  		this.addNewMessage(messageGot)
+  			return (
+  				<div className="MessageList">
+  				{
+  					this.state.map (
+  					(value) =>		
+						<Message 
+						text = {value.text}
+						time = {value.time}
+						file = {value.file}
+						spanText = {value.spanText}/>
+					)
+				}
+				</div>
+  				)
+}
+  			
   }

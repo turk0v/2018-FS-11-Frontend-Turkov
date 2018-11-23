@@ -42,3 +42,9 @@
     min-width: 30vw;
     max-width: 60vw;
 }
+
+.LeftMessageAttributes {
+    display: flex;
+    align-self: flex-start;
+    text-align: left;
+}
