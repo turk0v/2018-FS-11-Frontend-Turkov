@@ -8,7 +8,6 @@ export default class MessageList extends Component {
 		super();
 		this.state = [
 			{
-				// idOfMessage : 1,
 				text: "hello, man",
 				time: new Date().toLocaleTimeString(),
 				spanText : 'v',
@@ -47,6 +46,7 @@ export default class MessageList extends Component {
 						text = {value.text}
 						time = {value.time}
 						file = {value.file}
+						yourMessage = {value.yourMessage}
 						spanText = {value.spanText}/>
 					)
 				}

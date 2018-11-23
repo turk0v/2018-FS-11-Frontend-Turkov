@@ -44,6 +44,7 @@ export default class ChatWindow extends Component {
 
 	}
 	render() {
+		console.log(this.state);
 		return (
 			<Aux>
 				<MessageList message={this.state.message}/>

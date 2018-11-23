@@ -34,7 +34,7 @@ export default class Message extends Component {
 	
 	render() {
 		return (
-			<div className={!this.yourMessage ? "LeftMessageAttributes Message" : "Message"}>
+			<div className={(!this.yourMessage) ? "LeftMessageAttributes Message" : "Message"}>
 			{this.attachment(this.file)}
 			<p>{this.text}</p>
 			<time className="TimeLabel">{this.time}</time>
