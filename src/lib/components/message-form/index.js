@@ -56,6 +56,7 @@ class MessageForm extends HTMLElement {
 			time: new Date(),
 			my: true
 		};
+		this._sendMessage(this._elements.message.value);
 		this._elements.message.value = '';
 		this._elements.form.classList.remove(stateClasses.withMessage);
 		const messageEvent = new CustomEvent('new-message', {
@@ -87,11 +88,48 @@ class MessageForm extends HTMLElement {
 			my: true,
 			files: event.target.files
 		};
+		this._sendFile(message.files);
+		// console.log(message.files);
 		const messageEvent = new CustomEvent('new-message', {
 			bubbles: false,
 			detail: message
 		});
 		this.dispatchEvent(messageEvent);
+	}
+	_sendMessage (text) {
+		var formData = new FormData();
+		formData.append('user','ReadyPlayerOne');
+		formData.append('message', text);
+		formData.append('time',new Date());
+		for (var pair of formData.entries()) {
+		    console.log(pair[0]+ ', ' + pair[1]); 
+		}
+        fetch('http://localhost:8081/message', {
+            method: 'POST',
+            body: formData,
+        }).then(
+            response => response.json()
+        ).then(success => console.log(success)
+        ).catch(error => console.log('error'));
+   
+	}
+
+	_sendFile (file) {
+		var formData = new FormData();
+		formData.append('user','ReadyPlayerOne');
+		formData.append('attachment', file);
+		formData.append('time',new Date());
+		for (var pair of formData.entries()) {
+		    console.log(pair[0]+ ', ' + pair[1]); 
+		}
+        fetch('http://localhost:8081/message', {
+            method: 'POST',
+            body: formData,
+        }).then(
+            response => response.json()
+        ).then(success => console.log(success)
+        ).catch(error => console.log('error'));
+   
 	}
 }
 
