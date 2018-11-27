@@ -3,7 +3,6 @@ import Header from './Components/Header/Header'
 import ChatWindow from './Components/ChatWindow/ChatWindow.js'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import ChatList from './Components/ChatList/ChatList.js'
-import ChatElement from './Components/ChatList/ChatElement/ChatElement.js'
 import Aux from '../hoc/Aux/Aux.js'
 import userAvatar1 from './public/avatar1.png'
 import userAvatar2 from './public/avatar2.png'
@@ -36,7 +35,7 @@ export default class App extends Component {
 		return (
 			<Router>
 				<Aux>
-					<Route path="/" exact component={this.Index} />
+					<Route path="/chats" exact component={() => <ChatList chats = {this.state.chats}/>} />
 					{
 						this.state.chats.map(
 						  ((value, index) =>
@@ -48,7 +47,6 @@ export default class App extends Component {
 						  )
 						)
 					}
-					<Route path="/chatelement" exact component={ChatElement} />
 				</Aux>
 			</Router>
 		);

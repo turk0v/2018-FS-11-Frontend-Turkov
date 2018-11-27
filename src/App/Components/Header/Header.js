@@ -9,7 +9,7 @@ export default class Header extends Component {
 		return (
 			<div className = "header-user">
 			<style>${shadowStyles.toString()}</style>
-			<img src={backArrow} id="back_img"  alt="back_img"></img>
+			<a href='/chats'><button className='back'><img src={backArrow} id="back_img"  alt="back_img"/></button></a>
 			<img src={this.props.ava} id="user_avatar" alt="user_avatar"></img>
 				<div className="senderInfo">
 	        		<div className="name">{this.props.name}</div>

@@ -44,9 +44,9 @@ export default class MessageList extends Component {
   				<div className="MessageList">
   				{
   					this.state.map (
-  					(value) =>		
+  					(value,index) =>		
 						<Message 
-						key = {this.getRandomInt(10000000)}
+						key = {index}
 						text = {value.text}
 						time = {value.time}
 						file = {value.file}
