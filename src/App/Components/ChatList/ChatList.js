@@ -3,9 +3,6 @@ import ChatElement from './ChatElement/ChatElement'
 import Aux from './../../../hoc/Aux/Aux.js'
 
 export default class ChatList extends Component {
-	constructor() {
-		super();
-	}
 	render() {
 		return (
 			<Aux>

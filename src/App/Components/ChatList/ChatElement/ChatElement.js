@@ -8,12 +8,16 @@ export default class ChatElement extends Component {
 		super(props);
 		this.id = props.id
 		this.name =props.name
+		this.avatar = props.ava
 	}
 	render() {
 		return (
 			<Aux>
 				<Link className='DialogueElem' to={`/chats/${this.id}`}>
+				<div>
+					<img src={this.avatar} className = 'chatPhoto' alt='user_avatar'/>
 					{this.name}
+				</div>
 				</Link>
 			</Aux>
 		);

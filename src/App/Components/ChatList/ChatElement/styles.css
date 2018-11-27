@@ -1,17 +1,26 @@
 .DialogueElem {
     height: 10vh;
-    border: 1px solid black;
+    border: 1px  black;
     background: #f0f0f0;
     margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-left: 10px;
+    /*align-items: center;*/
+    /*justify-content: center;*/
     font-size: 4vh;
-    font-family: "American Typewriter", sans-serif;
-    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
     text-shadow: 0 0 0px black;
     box-shadow: 0 0 1px 0px black;
     text-decoration: none;
     color: #000;
+}
+.chatPhoto {
+    margin-top: 2px;
+    margin-left: 2px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    max-height: 5vh;
 }
