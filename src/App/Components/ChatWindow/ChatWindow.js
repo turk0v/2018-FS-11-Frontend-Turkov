@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Aux from './../../../hoc/Aux/Aux.js'
 import MessageList from '../Message-list/Message-list.js'
 import MessageForm from './../Message-form/Message-form.js'
+import Header from './../Header/Header.js'
 
 export default class ChatWindow extends Component {
 	constructor() {
@@ -46,6 +47,7 @@ export default class ChatWindow extends Component {
 	render() {
 		return (
 			<Aux overflow = 'auto'>
+				<Header name = {this.props.name} ava = {this.props.ava} />
 				<MessageList message={this.state.message}/>
 				<MessageForm  dispatcher={this.handleMessage.bind(this)}/>
 			</Aux>
