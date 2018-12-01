@@ -6,9 +6,10 @@ import Aux from './../../../../hoc/Aux/Aux.js'
 export default class ChatElement extends Component {
 	constructor(props) {
 		super(props);
-		this.id = props.id
-		this.name =props.name
-		this.avatar = props.ava
+		this.id = props.id;
+		this.name =props.name;
+		this.avatar = props.ava;
+		this.unread = props.unread;
 	}
 	render() {
 		return (
@@ -17,6 +18,7 @@ export default class ChatElement extends Component {
 				<div>
 					<img src={this.avatar} className = 'chatPhoto' alt='user_avatar'/>
 					{this.name}
+					<div className='unreadMessage'>{this.unread}</div>
 				</div>
 				</Link>
 			</Aux>
