@@ -1,11 +1,14 @@
-import * as actionTypes from './../actions/actionTypes'
 import * as fakeData from './fakeData'
 
-const initialState = {
+const initialStore = {
 	chatsValues: [...fakeData.chats],
 };
-const reducer = (state = initialState , action) => {
-	return state
+const reducer = (store = initialStore , action) => {
+	if(action.type = 'ENTER'){ 
+		console.log(action.type)
+		return store
 }
+	return store;
+};
 
 export default reducer;

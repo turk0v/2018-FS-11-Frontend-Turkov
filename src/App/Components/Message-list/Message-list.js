@@ -7,15 +7,6 @@ import {connect} from 'react-redux'
 class MessageList extends Component {
 	constructor() {
 		super();
-		this.state = [
-			{
-				text: "hello, man",
-				time: new Date().toLocaleTimeString(),
-				spanText : 'v',
-				yourMessage : false,
-			},
-			
-		]
 		this.addNewMessage.bind(this);
 	}
 
@@ -26,8 +17,11 @@ class MessageList extends Component {
 		newMessage['spanText'] = messageGot.spanText;
 		newMessage['yourMessage'] = messageGot.yourMessage;
 		newMessage['file'] = messageGot.file;
-		this.state.push(newMessage);
+		this.props.messagesGot.messages.push(newMessage);
 	}
+	// onEnterance() {
+	// 	console.log(this.props.id);
+	// }
 
   	render() {
   		let messageGot = { 
@@ -38,11 +32,11 @@ class MessageList extends Component {
   			file : this.props.message.file,
   		}
   		this.addNewMessage(messageGot)
-  		console.log(this.props.messages);
+  		console.log(this.props.messagesGot);
   			return (
   				<div className="MessageList">
   				{
-  					this.props.messages.map (
+  					this.props.messagesGot.messages.map (
   					(value,index) =>		
 						<Message 
 						key = {index}
@@ -60,22 +54,9 @@ class MessageList extends Component {
  }
  const mapStatetoProps =(state) => {
  	return {
- 		messages: state.messageList.messages,
+ 		messagesGot: state.messageList,
+ 		chats:state.chatsList
  	}
  };
-
- // const mapDispachtoProps = (dispach) => {
- // 	return {
- // 		addMessage: () => dispach({
- // 			type: 'ADD_MESSAGE',
- // 			message : {
- // 				text: "hello, m",
-	// 			time: new Date().toLocaleTimeString(),
-	// 			spanText : 'v',
-	// 			yourMessage : false,
- // 			}
- // 		})
- // 	}
- // }
 
 export default connect(mapStatetoProps)(MessageList);

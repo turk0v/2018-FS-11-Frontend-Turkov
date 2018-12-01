@@ -3,8 +3,9 @@ import Aux from './../../../hoc/Aux/Aux.js'
 import MessageList from '../Message-list/Message-list.js'
 import MessageForm from './../Message-form/Message-form.js'
 import Header from './../Header/Header.js'
+import {connect} from 'react-redux'
 
-export default class ChatWindow extends Component {
+class ChatWindow extends Component {
 	constructor() {
 		super();
 		this.handleMessage = this.handleMessage.bind(this);
@@ -45,12 +46,27 @@ export default class ChatWindow extends Component {
 
 	}
 	render() {
+		this.props.onEnterence();
 		return (
 			<Aux overflow = 'auto'>
 				<Header name = {this.props.name} ava = {this.props.ava} />
-				<MessageList message={this.state.message}/>
+				<MessageList message={this.state.message} id ={this.props.id}/>
 				<MessageForm  dispatcher={this.handleMessage.bind(this)}/>
 			</Aux>
 		);
 	}
 }
+const mapStatetoProps = (state) => {
+	return {
+		chat: state.chatsList
+	}
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onEnterence: (id, value) => dispatch({
+    	type:'ENTER'
+    })
+  }
+};
+
+export default connect(mapStatetoProps,mapDispatchToProps) (ChatWindow);

@@ -8,43 +8,43 @@ import userAvatar6 from './../../App/public/avatar6.png'
 
 
 export const messages = [
-	{
-	text: "hello, man",
-	time: new Date().toLocaleTimeString(),
-	spanText : 'v',
-	yourMessage : false,
-	}
 ];
 export const chats = [
 {
 	chatName : 'Долли',
 	avatar : userAvatar1,
 	unread: 1,
+	unreadBool : true,
 },
 {
 	chatName : 'Додо',
 	avatar : userAvatar2,
 	unread: 1,
+	unreadBool : true,
 },
 {
 	chatName : 'Джими',
 	avatar : userAvatar3,
 	unread: 1,
+	unreadBool : true,
 },
 {
 	chatName : 'Буль',
 	avatar : userAvatar4,
 	unread: 1,
+	unreadBool : true,
 },
 {
 	chatName : 'Кендрик',
 	avatar : userAvatar5,
 	unread: 1,
+	unreadBool : true,
 },
 {
 	chatName : 'Шиле',
 	avatar : userAvatar6,
 	unread: 1,
+	unreadBool : true,
 },
 ]
 

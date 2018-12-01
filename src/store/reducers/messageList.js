@@ -1,5 +1,4 @@
 import * as fakeData from './fakeData.js'
-import * as actionTypes from './../actions/actionTypes.js'
 
 const initialStore = {
 	messages : [...fakeData.messages],
