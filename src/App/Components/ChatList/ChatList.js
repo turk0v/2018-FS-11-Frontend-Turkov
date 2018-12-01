@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
 import ChatElement from './ChatElement/ChatElement'
 import Aux from './../../../hoc/Aux/Aux.js'
+import {connect} from 'react-redux'
 
-export default class ChatList extends Component {
+class ChatList extends Component {
 	render() {
 		return (
 			<Aux>
-				{
-					this.props.chats.map(((value, index) =>
-					<ChatElement
-					  key={index}
-					  name={value.chatName}
-					  ava = {value.avatar}
-					  id={index}
-					  />))
+				{	
+					this.props.chat.chatsValues.map (
+						(value,index) =>
+						<ChatElement
+						name={value.chatName}
+						id = {index}
+						key = {index}
+						ava={value.avatar}/>)
 				}
 			</Aux>
 		);
 	}
 }
+
+const mapStatetoProps = (state) => {
+	return {
+		chat: state.chatsList
+	}
+};
+
+export default connect(mapStatetoProps) (ChatList);

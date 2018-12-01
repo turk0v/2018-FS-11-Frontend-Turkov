@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './shadow.css';
 import Message from './Message/Message.js'
+import {connect} from 'react-redux'
 
 
-export default class MessageList extends Component {
+class MessageList extends Component {
 	constructor() {
 		super();
 		this.state = [
@@ -27,9 +28,6 @@ export default class MessageList extends Component {
 		newMessage['file'] = messageGot.file;
 		this.state.push(newMessage);
 	}
-	getRandomInt(max) {
-	  return Math.floor(Math.random() * Math.floor(max));
-	}
 
   	render() {
   		let messageGot = { 
@@ -40,10 +38,11 @@ export default class MessageList extends Component {
   			file : this.props.message.file,
   		}
   		this.addNewMessage(messageGot)
+  		console.log(this.props.messages);
   			return (
   				<div className="MessageList">
   				{
-  					this.state.map (
+  					this.props.messages.map (
   					(value,index) =>		
 						<Message 
 						key = {index}
@@ -58,4 +57,25 @@ export default class MessageList extends Component {
   				)
 }
   			
-  }
+ }
+ const mapStatetoProps =(state) => {
+ 	return {
+ 		messages: state.messageList.messages,
+ 	}
+ };
+
+ // const mapDispachtoProps = (dispach) => {
+ // 	return {
+ // 		addMessage: () => dispach({
+ // 			type: 'ADD_MESSAGE',
+ // 			message : {
+ // 				text: "hello, m",
+	// 			time: new Date().toLocaleTimeString(),
+	// 			spanText : 'v',
+	// 			yourMessage : false,
+ // 			}
+ // 		})
+ // 	}
+ // }
+
+export default connect(mapStatetoProps)(MessageList);
