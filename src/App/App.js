@@ -11,7 +11,6 @@ import {connect} from 'react-redux'
 class App extends Component {
 	Index = () => <h2>Home</h2>;
 	render() {
-		console.log(this.props.chat.chatsValues)
 		return (
 			<Router>
 				<Aux>

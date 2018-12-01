@@ -32,7 +32,6 @@ class MessageList extends Component {
   			file : this.props.message.file,
   		}
   		this.addNewMessage(messageGot)
-  		console.log(this.props.messagesGot);
   			return (
   				<div className="MessageList">
   				{

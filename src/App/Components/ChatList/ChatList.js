@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 
 class ChatList extends Component {
 	render() {
-		console.log(this.props.chat.chatsValues[0].unreadBool)
 		return (
 			<Aux>
 				{	
@@ -17,7 +16,7 @@ class ChatList extends Component {
 						key = {index}
 						ava={value.avatar}
 						unread={value.unread}
-						unreadBool={value.unreadBool}/>)
+						/>)
 				}
 			</Aux>
 		);

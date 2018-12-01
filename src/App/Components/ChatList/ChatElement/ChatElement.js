@@ -10,10 +10,8 @@ export default class ChatElement extends Component {
 		this.name =props.name;
 		this.avatar = props.ava;
 		this.unread = props.unread;
-		this.boolean = props.unreadBool;
 	}
 	render() {
-		console.log(this.boolean);
 		return (
 			<Aux>
 				<Link className='DialogueElem' to={`/chats/${this.id}`}>
