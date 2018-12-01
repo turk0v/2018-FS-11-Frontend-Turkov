@@ -14,7 +14,8 @@ class ChatList extends Component {
 						name={value.chatName}
 						id = {index}
 						key = {index}
-						ava={value.avatar}/>)
+						ava={value.avatar}
+						unread={value.unread}/>)
 				}
 			</Aux>
 		);

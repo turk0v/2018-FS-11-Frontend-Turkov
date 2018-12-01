@@ -7,18 +7,6 @@ import userAvatar6 from './../../App/public/avatar6.png'
 
 
 
-export const chatNames = [
-	'Chat1',
-	'Chat2',
-	'Chat3'
-];
-
-export const unread = [
-	1,
-	1,
-	1,
-];
-
 export const messages = [
 	{
 	text: "hello, man",
@@ -31,26 +19,32 @@ export const chats = [
 {
 	chatName : 'Долли',
 	avatar : userAvatar1,
+	unread: 1,
 },
 {
 	chatName : 'Додо',
 	avatar : userAvatar2,
+	unread: 1,
 },
 {
 	chatName : 'Джими',
 	avatar : userAvatar3,
+	unread: 1,
 },
 {
 	chatName : 'Буль',
 	avatar : userAvatar4,
+	unread: 1,
 },
 {
 	chatName : 'Кендрик',
 	avatar : userAvatar5,
+	unread: 1,
 },
 {
 	chatName : 'Шиле',
 	avatar : userAvatar6,
+	unread: 1,
 },
 ]
 
