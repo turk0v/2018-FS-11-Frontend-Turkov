@@ -3,6 +3,7 @@ import ChatWindow from './Components/ChatWindow/ChatWindow.js'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import ChatList from './Components/ChatList/ChatList.js'
 import Aux from '../hoc/Aux/Aux.js'
+import Auth from './Components/Auth/Auth.js'
 import {connect} from 'react-redux'
 
 
@@ -14,6 +15,7 @@ class App extends Component {
 		return (
 			<Router>
 				<Aux>
+					<Route path="/" exact component={() => <Auth/>} />
 					<Route path="/chats" exact component={() => <ChatList/>} />
 					{
 						this.props.chat.chatsValues.map(
