@@ -1,46 +1,40 @@
-import React, { Component } from 'react';
-import Input from './../Input/Input.js'
+import React from 'react'
+import { connect } from 'react-redux'
+import { User } from './../User/User.js'
+import { handleLogin } from './../../../store/actions/UserActions.js'
 
-class Auth extends Component {
-	state = {
-	   loginForm: {
-	     login: {
-	       label: 'Введите логин',
-	       elementType: 'input',
-	       elementConfig: {
-	         type: 'text',
-	         placeholder: 'Логин'
-	       },
-	       value: '',
-	       valid: false,
-	       touched: false,
-	       validation: {
-	         isRequired: true,
-	         minLength: 6,
-	       }
-	     },
-	     password: {
-	       elementType: 'input',
-	       value: '',
-	       label: 'Введите пароль',
-	       elementConfig: {
-	         type: 'password',
-	         placeholder: 'Пароль'
-	       },
-	       touched: false,
-	       valid: false,
-	       validation: {
-	         isRequired: true,
-	       }
-	     }
-	   },
-	   valid: false,
-	 };
-	render() {
-		return (
-			<div>Hi</div>
-		);
-	}
+class Auth extends React.Component {
+  handleLogin = () => {
+    const { handleLogin} = this.props
+    const successCallback = true
+    handleLogin(successCallback)
+  }
+
+  render() {
+    const { user } = this.props
+    return (
+      <User
+        name={user.name}
+        error={user.error}
+        handleLogin={this.handleLogin}
+      />
+    )
+  }
 }
 
-export default Auth;
+const mapStateToProps = store => {
+  return {
+    user: store.user,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleLogin: successCallback => dispatch(handleLogin(successCallback)),
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Auth)

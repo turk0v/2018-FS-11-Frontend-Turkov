@@ -46,7 +46,6 @@ class ChatWindow extends Component {
 
 	}
 	render() {
-		this.props.onEnterence();
 		return (
 			<Aux overflow = 'auto'>
 				<Header name = {this.props.name} ava = {this.props.ava} />
@@ -61,12 +60,5 @@ const mapStatetoProps = (state) => {
 		chat: state.chatsList
 	}
 };
-const mapDispatchToProps = dispatch => {
-  return {
-    onEnterence: (id, value) => dispatch({
-    	type:'ENTER'
-    })
-  }
-};
 
-export default connect(mapStatetoProps,mapDispatchToProps) (ChatWindow);
+export default connect(mapStatetoProps) (ChatWindow);
