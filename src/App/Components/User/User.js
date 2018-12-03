@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Redirect} from 'react-router-dom';
 import './style.css'
 
 export class User extends React.Component {
@@ -11,7 +12,9 @@ export class User extends React.Component {
 
     if (name) {
       console.log('was here')
-      return <p>Привет, {name}!</p>
+      return ( 
+        <Redirect to='/chats'></Redirect>
+      )
     } else {
       return (
         <button className="Button" onClick={this.props.handleLogin}>

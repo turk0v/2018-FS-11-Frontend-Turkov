@@ -1,19 +1,25 @@
 .Button {
-  border: none;
-  border-radius: 2px;
-  display: inline-block;
-  height: 36px;
-  line-height: 36px;
-  font-size: 16px;
-  outline: 0;
-  padding: 0 2rem;
-  text-transform: uppercase;
-  vertical-align: middle;
-  color: #fff;
-  background-color: #6383a8;
-  text-align: center;
-  letter-spacing: .5px;
-  transition: .2s ease-out;
-  cursor: pointer;
-  margin-right: 3px;
+  	border: none;
+  	border-radius: 2px;
+  	overflow: hidden;
+  	position: absolute;
+  	width: 100%;
+  	height: 100%;
+  	display: flex;
+  	justify-content: center; /*centers items on the line (the x-axis by default)*/
+  	align-items: center;
+  	margin-top: 200px;
+  	height: 36px;
+  	line-height: 36px;
+  	font-size: 16px;
+  	outline: 0;
+  	padding: 0 2rem;
+  	text-transform: uppercase;
+  	/*vertical-align: middle;*/
+  	color: #fff;
+ 	background-color: #6383a8;
+ 	text-align: center;
+  	letter-spacing: .5px;
+ 	/*transition: .2s ease-out;*/
+ 	cursor: pointer;
 }
