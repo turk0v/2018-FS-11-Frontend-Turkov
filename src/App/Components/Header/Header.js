@@ -7,11 +7,10 @@ import {connect} from 'react-redux'
 
 class Header extends Component {
 	render() {
-		console.log(this.props.user.name)
 		return (
 			<div className = "header-user">
 			<style>${shadowStyles.toString()}</style>
-			<a href='/chats'><button className='back'><img src={backArrow} id="back_img"  alt="back_img"/></button></a>
+			<a href="javascript: history.go(-1)"><button className='back'><img src={backArrow} id="back_img"  alt="back_img"/></button></a>
 			<img src={this.props.ava} id="user_avatar" alt="user_avatar"></img>
 				<div className="senderInfo">
 	        		<div className="name">{this.props.name}</div>

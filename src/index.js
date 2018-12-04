@@ -6,7 +6,6 @@ import { createStore, combineReducers, applyMiddleware  } from "redux";
 import messageList from "./store/reducers/messageList";
 import chats from './store/reducers/chat.js'
 import userReducer from './store/reducers/user.js'
-import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
 const mainReducer = combineReducers({

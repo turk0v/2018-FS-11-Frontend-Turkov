@@ -11,14 +11,12 @@ import {connect} from 'react-redux'
 
 class App extends Component {
 	render() {
-		var tmpVal = false;
+		var tmpName = false;
 		if (this.props.user.name) {
-			var tmpName = this.props.user.name;
-			var tmpVal = true;
+			tmpName = this.props.user.name;
 		}
 		let route =(
 		<div>
-			{console.log('in first div, tmpVal ='+tmpVal)}
 			<Route path="/" exact component={() => <Auth/>} />
 			<Redirect to='/'></Redirect>
 		</div>
@@ -26,7 +24,6 @@ class App extends Component {
 		if(tmpName) {
 			route = (
 			<Switch>
-				{console.log(tmpName)}
 				<Route path="/chats" exact component={() => <ChatList/>} />
 				{
 					this.props.chat.chatsValues.map(
