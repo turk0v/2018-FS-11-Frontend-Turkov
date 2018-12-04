@@ -10,6 +10,7 @@ export function handleLogin(callback) {
 
     //eslint-disable-next-line no-undef
     VK.Auth.login(r => {
+      console.log(r.session)
       if (r.session) {
         const username = r.session.user.first_name
         dispatch({

@@ -3,9 +3,11 @@ import shadowStyles from './shadow.css'
 import backArrow from '../../public/back_arrow.png'
 import menuButton from '../../public/menu.png'
 import searchButton from '../../public/search.png'
+import {connect} from 'react-redux'
 
-export default class Header extends Component {
+class Header extends Component {
 	render() {
+		console.log(this.props.user.name)
 		return (
 			<div className = "header-user">
 			<style>${shadowStyles.toString()}</style>
@@ -21,3 +23,10 @@ export default class Header extends Component {
 		);
 	}
 }
+const mapStatetoProps = (state) => {
+	return {
+		user: state.user,
+	}
+};
+
+export default connect(mapStatetoProps) (Header);

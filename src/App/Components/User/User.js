@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Redirect} from 'react-router-dom';
 import './style.css'
 
 export class User extends React.Component {
@@ -11,9 +10,8 @@ export class User extends React.Component {
     }
 
     if (name) {
-      console.log('was here')
       return ( 
-        <Redirect to='/chats'></Redirect>
+        null
       )
     } else {
       return (
@@ -24,7 +22,6 @@ export class User extends React.Component {
     }
   }
   render() {
-    console.log(this.props)
     return <div >{this.renderTemplate()}</div>
   }
 }

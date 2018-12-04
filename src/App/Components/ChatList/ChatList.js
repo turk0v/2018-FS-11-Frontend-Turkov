@@ -25,7 +25,8 @@ class ChatList extends Component {
 
 const mapStatetoProps = (state) => {
 	return {
-		chat: state.chatsList
+		chat: state.chatsList,
+		user: state.user,
 	}
 };
 
