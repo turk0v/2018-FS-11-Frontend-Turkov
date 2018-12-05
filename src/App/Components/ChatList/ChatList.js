@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import ChatElement from './ChatElement/ChatElement'
 import Aux from './../../../hoc/Aux/Aux.js'
 import {connect} from 'react-redux'
+import {onLoadChatNames} from './../../../store/actions/chatsList.js'
 
 class ChatList extends Component {
+	componentWillMount () {
+	    this.props.onLoadChatNames();
+	}
 	render() {
 		return (
 			<Aux>
@@ -29,5 +33,10 @@ const mapStatetoProps = (state) => {
 		user: state.user,
 	}
 };
+const mapDispatchToProps = dispatch => {
+  return {
+    onLoadChatNames: () => dispatch(onLoadChatNames()),
+  }
+};
 
-export default connect(mapStatetoProps) (ChatList);
+export default connect(mapStatetoProps,mapDispatchToProps) (ChatList);
