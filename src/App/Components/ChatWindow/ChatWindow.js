@@ -8,7 +8,7 @@ import {connect} from 'react-redux'
 class ChatWindow extends Component {
 	constructor() {
 		super();
-		this.handleMessage = this.handleMessage.bind(this);
+		// this.handleMessage = this.handleMessage.bind(this);
 		this.state = {
 			message: {
 				text : 'hi,boi',

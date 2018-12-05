@@ -4,13 +4,14 @@ import backArrow from '../../public/back_arrow.png'
 import menuButton from '../../public/menu.png'
 import searchButton from '../../public/search.png'
 import {connect} from 'react-redux'
-
+import { Link } from 'react-router-dom'
+// javascript: history.go(-1)
 class Header extends Component {
 	render() {
 		return (
 			<div className = "header-user">
 			<style>${shadowStyles.toString()}</style>
-			<a href="javascript: history.go(-1)"><button className='back'><img src={backArrow} id="back_img"  alt="back_img"/></button></a>
+			<Link to="/chats"><button className='back'><img src={backArrow} id="back_img"  alt="back_img"/></button></Link>
 			<img src={this.props.ava} id="user_avatar" alt="user_avatar"></img>
 				<div className="senderInfo">
 	        		<div className="name">{this.props.name}</div>

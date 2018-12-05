@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './style.css'
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
 export class User extends React.Component {
   renderTemplate = () => {
@@ -11,7 +12,7 @@ export class User extends React.Component {
 
     if (name) {
       return ( 
-        null
+        <Redirect to='/chats'></Redirect>
       )
     } else {
       return (
