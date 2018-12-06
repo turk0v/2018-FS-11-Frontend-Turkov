@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import ChatElement from './ChatElement/ChatElement'
 import Aux from './../../../hoc/Aux/Aux.js'
 import {connect} from 'react-redux'
+import {onLoadChatNames} from './../../../store/actions/chatsList.js'
 
 class ChatList extends Component {
+	componentWillMount () {
+		if (this.props.chat.needToUpdate) {
+			this.props.onLoadChatNames();
+		}
+	}
 	render() {
 		return (
 			<Aux>
@@ -11,10 +17,10 @@ class ChatList extends Component {
 					this.props.chat.chatsValues.map (
 						(value,index) =>
 						<ChatElement
-						name={value.chatName}
+						name={value.name}
 						id = {index}
 						key = {index}
-						ava={value.avatar}
+						ava = {this.props.ava.photo}
 						unread={value.unread}
 						/>)
 				}
@@ -25,8 +31,15 @@ class ChatList extends Component {
 
 const mapStatetoProps = (state) => {
 	return {
-		chat: state.chatsList
+		chat: state.chatsList,
+		user: state.user,
+		ava: state.ava,
 	}
 };
+const mapDispatchToProps = dispatch => {
+  return {
+    onLoadChatNames: () => dispatch(onLoadChatNames()),
+  }
+};
 
-export default connect(mapStatetoProps) (ChatList);
+export default connect(mapStatetoProps,mapDispatchToProps) (ChatList);

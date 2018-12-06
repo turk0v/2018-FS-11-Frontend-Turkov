@@ -8,7 +8,7 @@ import {connect} from 'react-redux'
 class ChatWindow extends Component {
 	constructor() {
 		super();
-		this.handleMessage = this.handleMessage.bind(this);
+		// this.handleMessage = this.handleMessage.bind(this);
 		this.state = {
 			message: {
 				text : 'hi,boi',
@@ -46,10 +46,9 @@ class ChatWindow extends Component {
 
 	}
 	render() {
-		this.props.onEnterence();
 		return (
 			<Aux overflow = 'auto'>
-				<Header name = {this.props.name} ava = {this.props.ava} />
+				<Header name = {this.props.name} ava = {this.props.ava.photo} />
 				<MessageList message={this.state.message} id ={this.props.id}/>
 				<MessageForm  dispatcher={this.handleMessage.bind(this)}/>
 			</Aux>
@@ -58,15 +57,9 @@ class ChatWindow extends Component {
 }
 const mapStatetoProps = (state) => {
 	return {
-		chat: state.chatsList
+		chat: state.chatsList,
+		ava: state.ava
 	}
 };
-const mapDispatchToProps = dispatch => {
-  return {
-    onEnterence: (id, value) => dispatch({
-    	type:'ENTER'
-    })
-  }
-};
 
-export default connect(mapStatetoProps,mapDispatchToProps) (ChatWindow);
+export default connect(mapStatetoProps) (ChatWindow);
