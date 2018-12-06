@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import './shadow.css';
 import Message from './Message/Message.js'
 import {connect} from 'react-redux'
+import {onLoadMessagesForChat} from './../../../store/actions/messageList.js'
 
 
 class MessageList extends Component {
-	constructor() {
-		super();
-		this.addNewMessage.bind(this);
-	}
-
 	addNewMessage(messageGot) {
 		var newMessage = {};
 		newMessage['text'] = messageGot.text;
@@ -18,11 +14,18 @@ class MessageList extends Component {
 		newMessage['yourMessage'] = messageGot.yourMessage;
 		newMessage['file'] = messageGot.file;
 		newMessage['chat_name'] = messageGot.chat_name;
-		this.props.messagesGot.messages.push(newMessage);
+		// if(this.props.chat_name == messageGot.chat_name)
+		// {	
+		// 	if(this.props.messagesProp.messageToChat[this.props.chat_name] == undefined){
+		// 		this.props.messagesProp.messageToChat[this.props.chat_name] = newMessage;
+		// 	}
+		// 	else{
+		// 	}
+		// 	let keyn = "this.props.chat_name"
+		// 	console.log(this.props.messagesProp.messageToChat)
+		// }
+		this.props.messagesProp.messagesGlobal.push(newMessage)
 	}
-	// onEnterance() {
-	// 	console.log(this.props.id);
-	// }
 
   	render() {
   		let messageGot = { 
@@ -33,40 +36,37 @@ class MessageList extends Component {
   			file : this.props.message.file,
   			chat_name : this.props.message.chat_name,
   		}
-  		// if (this.props.messagesGot.messages[0] !== undefined){
-  		// 	if(this.props.chat_name == this.props.messagesGot.messages[0].chat_name) {
-  		// 		this.addNewMessage(messageGot)
-  		// 	}
-  		// }
-  		console.log(this.props.message.chat_name)
-  		// console.log(this.props.chats)
   		this.addNewMessage(messageGot)
   			return (
   				<div className="MessageList">
   				{
-  					this.props.messagesGot.messages.map (
+  					this.props.messagesProp.messagesGlobal.map(
   					(value,index) =>		
 						<Message 
-						key = {index}
-						text = {value.text}
-						time = {value.time}
-						file = {value.file}
-						yourMessage = {value.yourMessage}
-						spanText = {value.spanText}
-						chat_name = {value.chat_name}
+							key = {index}
+							text = {value.text}
+							time = {value.time}
+							file = {value.file}
+							yourMessage = {value.yourMessage}
+							spanText = {value.spanText}
+							chat_name = {value.chat_name}
 						/>
 					)
 				}
 				</div>
   				)
+	}
 }
-  			
- }
  const mapStatetoProps =(state) => {
  	return {
- 		messagesGot: state.messageList,
+ 		messagesProp: state.messageList,
  		chats:state.chatsList
  	}
  };
+ const mapDispatchToProps = dispatch => {
+   return {
+     onLoadMessagesForChat: () => dispatch(onLoadMessagesForChat()),
+   }
+ };
 
-export default connect(mapStatetoProps)(MessageList);
+export default connect(mapStatetoProps,mapDispatchToProps)(MessageList);

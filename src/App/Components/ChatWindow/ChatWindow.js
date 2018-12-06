@@ -6,8 +6,8 @@ import Header from './../Header/Header.js'
 import {connect} from 'react-redux'
 
 class ChatWindow extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		// this.handleMessage = this.handleMessage.bind(this);
 		this.state = {
 			message: {
@@ -15,7 +15,7 @@ class ChatWindow extends Component {
 				time : new Date().toLocaleTimeString(),
 				spanText : 'v',
 				yourMessage : false,
-				chat_name :'Rick'
+				chat_name :this.props.name,
 			},
 		}
 	}
@@ -36,24 +36,27 @@ class ChatWindow extends Component {
 	      }).then(
 	      (event) => {
 	        if (event.status === 200) {
-	          newMessage.spanText = 'v';
-	          this.setState({message: newMessage});
+	        	if(newMessage.text !== ''){
+	          		newMessage.spanText = 'v';
+	          		this.setState({message: newMessage});
+	          	}
 	        }
 	      },
 	      (event) => {
-	        newMessage.spanText = 'x';
-	        this.setState({message: newMessage});
-	        console.log(this.props.name)
-	        console.log(this.props.id)
+	      		if(newMessage.text !== ''){
+	      	  		newMessage.spanText = 'x';
+	      	  		this.setState({message: newMessage});
+	      	  	}
 	      }
 	    );
 
 	}
-	render() {
+	render() 
+	{
 		return (
 			<Aux overflow = 'auto'>
 				<Header name = {this.props.name} ava = {this.props.ava.photo} />
-				<MessageList message={this.state.message} id ={this.props.id}/>
+				<MessageList message={this.state.message} id ={this.props.id} chat_name={this.props.name} your ={this.state.message.yourMessage} />
 				<MessageForm  dispatcher={this.handleMessage.bind(this)}/>
 			</Aux>
 		);

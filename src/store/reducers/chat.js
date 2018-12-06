@@ -15,14 +15,6 @@ const reducer = (store = initialStore, action) => {
         chatsValues: action.payload.chatNames,
       });
     }
-
-    // case actionTypes.CHATS_LIST_LOADED: {
-    //   return updateObject(state, {
-    //     chatNames: action.payload.chatNames,
-    //     needToUpdate: false
-    //   })
-    // }
-
     default:
       return store;
   }
