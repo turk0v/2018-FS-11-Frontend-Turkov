@@ -31,7 +31,7 @@ class App extends Component {
 						  <Route
 						    key={index}
 						    path={`/chats/${index}`}
-						    component={() => <ChatWindow id={index} name={value.chatName} ava={value.avatar}/>}
+						    component={() => <ChatWindow id={index} name={value.name}/>}
 						  />
 						  )
 						)

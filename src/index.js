@@ -6,12 +6,14 @@ import { createStore, combineReducers, applyMiddleware  } from "redux";
 import messageList from "./store/reducers/messageList";
 import chats from './store/reducers/chat.js'
 import userReducer from './store/reducers/user.js'
+import defaultAvatar from './store/reducers/defaultAvatar.js'
 import thunk from 'redux-thunk'
 
 const mainReducer = combineReducers({
     messageList:messageList,
     chatsList:chats,
     user: userReducer,
+    ava:  defaultAvatar,
 })
 
 const store = createStore(mainReducer,applyMiddleware(thunk));

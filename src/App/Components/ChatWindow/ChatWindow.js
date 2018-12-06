@@ -48,7 +48,7 @@ class ChatWindow extends Component {
 	render() {
 		return (
 			<Aux overflow = 'auto'>
-				<Header name = {this.props.name} ava = {this.props.ava} />
+				<Header name = {this.props.name} ava = {this.props.ava.photo} />
 				<MessageList message={this.state.message} id ={this.props.id}/>
 				<MessageForm  dispatcher={this.handleMessage.bind(this)}/>
 			</Aux>
@@ -57,7 +57,8 @@ class ChatWindow extends Component {
 }
 const mapStatetoProps = (state) => {
 	return {
-		chat: state.chatsList
+		chat: state.chatsList,
+		ava: state.ava
 	}
 };
 

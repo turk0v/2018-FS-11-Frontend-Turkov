@@ -6,7 +6,9 @@ import {onLoadChatNames} from './../../../store/actions/chatsList.js'
 
 class ChatList extends Component {
 	componentWillMount () {
-	    this.props.onLoadChatNames();
+		if (this.props.chat.needToUpdate) {
+			this.props.onLoadChatNames();
+		}
 	}
 	render() {
 		return (
@@ -15,10 +17,10 @@ class ChatList extends Component {
 					this.props.chat.chatsValues.map (
 						(value,index) =>
 						<ChatElement
-						name={value.chatName}
+						name={value.name}
 						id = {index}
 						key = {index}
-						ava={value.avatar}
+						ava = {this.props.ava.photo}
 						unread={value.unread}
 						/>)
 				}
@@ -31,6 +33,7 @@ const mapStatetoProps = (state) => {
 	return {
 		chat: state.chatsList,
 		user: state.user,
+		ava: state.ava,
 	}
 };
 const mapDispatchToProps = dispatch => {
