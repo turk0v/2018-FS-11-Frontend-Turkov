@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { User } from './../User/User.js'
 import { handleLogin } from './../../../store/actions/UserActions.js'
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
 class Auth extends React.Component {
   handleLogin = () => {
@@ -13,11 +14,14 @@ class Auth extends React.Component {
   render() {
     const { user } = this.props
     return (
+      <Switch>
       <User
         name={user.name}
         error={user.error}
         handleLogin={this.handleLogin}
       />
+      <Redirect to='/chats'></Redirect>
+      </Switch>
     )
   }
 }

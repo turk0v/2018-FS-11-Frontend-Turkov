@@ -17,6 +17,7 @@ class MessageList extends Component {
 		newMessage['spanText'] = messageGot.spanText;
 		newMessage['yourMessage'] = messageGot.yourMessage;
 		newMessage['file'] = messageGot.file;
+		newMessage['chat_name'] = messageGot.chat_name;
 		this.props.messagesGot.messages.push(newMessage);
 	}
 	// onEnterance() {
@@ -30,7 +31,15 @@ class MessageList extends Component {
   			spanText : this.props.message.spanText,
   			yourMessage : this.props.message.yourMessage,
   			file : this.props.message.file,
+  			chat_name : this.props.message.chat_name,
   		}
+  		// if (this.props.messagesGot.messages[0] !== undefined){
+  		// 	if(this.props.chat_name == this.props.messagesGot.messages[0].chat_name) {
+  		// 		this.addNewMessage(messageGot)
+  		// 	}
+  		// }
+  		console.log(this.props.message.chat_name)
+  		// console.log(this.props.chats)
   		this.addNewMessage(messageGot)
   			return (
   				<div className="MessageList">
@@ -43,7 +52,9 @@ class MessageList extends Component {
 						time = {value.time}
 						file = {value.file}
 						yourMessage = {value.yourMessage}
-						spanText = {value.spanText}/>
+						spanText = {value.spanText}
+						chat_name = {value.chat_name}
+						/>
 					)
 				}
 				</div>

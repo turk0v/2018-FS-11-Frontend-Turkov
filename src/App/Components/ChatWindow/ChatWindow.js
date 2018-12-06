@@ -11,10 +11,11 @@ class ChatWindow extends Component {
 		// this.handleMessage = this.handleMessage.bind(this);
 		this.state = {
 			message: {
-				text : 'hi,boi',
+				text : 'Hi,real user',
 				time : new Date().toLocaleTimeString(),
 				spanText : 'v',
 				yourMessage : false,
+				chat_name :'Rick'
 			},
 		}
 	}
@@ -25,7 +26,8 @@ class ChatWindow extends Component {
 			spanText: '>...',
 			yourMessage : true,
 			file: handlingMessage.file,
-		}
+			chat_name: this.props.name,
+			}
 
 		fetch('http://localhost:8081/message',
 	      {
@@ -41,6 +43,8 @@ class ChatWindow extends Component {
 	      (event) => {
 	        newMessage.spanText = 'x';
 	        this.setState({message: newMessage});
+	        console.log(this.props.name)
+	        console.log(this.props.id)
 	      }
 	    );
 
