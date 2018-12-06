@@ -11,7 +11,7 @@ class ChatWindow extends Component {
 		// this.handleMessage = this.handleMessage.bind(this);
 		this.state = {
 			message: {
-				text : 'Hi,real user',
+				text : 'Hi',
 				time : new Date().toLocaleTimeString(),
 				spanText : 'v',
 				yourMessage : false,

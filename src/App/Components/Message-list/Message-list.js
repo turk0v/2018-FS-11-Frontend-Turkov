@@ -7,24 +7,26 @@ import {onLoadMessagesForChat} from './../../../store/actions/messageList.js'
 
 class MessageList extends Component {
 	addNewMessage(messageGot) {
-		var newMessage = {};
+		var newMessage = [];
 		newMessage['text'] = messageGot.text;
 		newMessage['time'] = messageGot.time;
 		newMessage['spanText'] = messageGot.spanText;
 		newMessage['yourMessage'] = messageGot.yourMessage;
 		newMessage['file'] = messageGot.file;
 		newMessage['chat_name'] = messageGot.chat_name;
-		// if(this.props.chat_name == messageGot.chat_name)
-		// {	
-		// 	if(this.props.messagesProp.messageToChat[this.props.chat_name] == undefined){
-		// 		this.props.messagesProp.messageToChat[this.props.chat_name] = newMessage;
-		// 	}
-		// 	else{
-		// 	}
-		// 	let keyn = "this.props.chat_name"
-		// 	console.log(this.props.messagesProp.messageToChat)
-		// }
-		this.props.messagesProp.messagesGlobal.push(newMessage)
+
+
+		if(this.props.chat_name == messageGot.chat_name)
+		{	
+			if(this.props.messagesProp.messageToChat[this.props.chat_name] == undefined){
+				this.props.messagesProp.messageToChat[this.props.chat_name] = newMessage;
+			}
+			else{
+				this.props.messagesProp.messageToChat[this.props.chat_name] = [...this.props.messagesProp.messageToChat[this.props.chat_name],
+																				newMessage]
+			}
+			console.log(this.props.messagesProp.messageToChat)
+		}
 	}
 
   	render() {
@@ -40,7 +42,7 @@ class MessageList extends Component {
   			return (
   				<div className="MessageList">
   				{
-  					this.props.messagesProp.messagesGlobal.map(
+  					this.props.messagesProp.messageToChat[this.props.chat_name].map(
   					(value,index) =>		
 						<Message 
 							key = {index}
@@ -63,10 +65,5 @@ class MessageList extends Component {
  		chats:state.chatsList
  	}
  };
- const mapDispatchToProps = dispatch => {
-   return {
-     onLoadMessagesForChat: () => dispatch(onLoadMessagesForChat()),
-   }
- };
 
-export default connect(mapStatetoProps,mapDispatchToProps)(MessageList);
+export default connect(mapStatetoProps)(MessageList);

@@ -3,8 +3,7 @@ import {CHATS_GET_MESSAGES} from './../actions/messageList.js'
 import updateObject from './../utility.js'
 
 const initialStore = {
-	messagesGlobal : [],
-	messageToChat:[],
+	messageToChat:{},
 
 };
 

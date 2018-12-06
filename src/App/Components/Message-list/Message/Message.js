@@ -33,11 +33,11 @@ export default class Message extends Component {
 	}
 
 	spanTextCheck() {
-		if (this.props.spanText == 'v'){
-			return <img src={sentLabel} className="StatusLabel"/>;
+		if (this.props.spanText === 'v'){
+			return <img src={sentLabel} className="StatusLabel" alt='yesSent'/>;
 		}
 		else {
-			return <img src={crossLabel} className="StatusLabelNo"/>;
+			return <img src={crossLabel} className="StatusLabelNo" alt='noSent'/>;
 		}
 	}
 
