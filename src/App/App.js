@@ -5,23 +5,21 @@ import ChatList from './Components/ChatList/ChatList.js'
 import Aux from '../hoc/Aux/Aux.js'
 import Auth from './Components/Auth/Auth.js'
 import {connect} from 'react-redux'
-
+import {authCheck} from './../store/actions/UserActions.js'
 
 
 
 class App extends Component {
+		componentWillMount() {
+		  this.props.checkLogin();
+		}
 		render() {
-			var tmpName = false;
-			if (this.props.user.name) {
-				tmpName = this.props.user.name;
-			}
 			let route =(
-			<div>
+			<Switch>
 				<Route exact path="/" component={() => <Auth/>} />
-				<Redirect to='/'></Redirect>
-			</div>
+			</Switch>
 			)
-			if(tmpName) {
+			if(this.props.user.isAuthorized) {
 				route = (
 				<Switch>
 					<Route exact path="/chats" component={() => <ChatList/>} />
@@ -40,6 +38,7 @@ class App extends Component {
 				</Switch>
 				)
 			}
+			
 			return (
 				<Router>
 					<Aux>
@@ -57,4 +56,9 @@ const mapStatetoProps = (state) => {
 		name: state.user.name
 	}
 };
-export default connect(mapStatetoProps) (App);
+const mapDispatchTpProps = dispatch => {
+  return {
+    checkLogin: () => dispatch(authCheck()),
+  }
+};
+export default connect(mapStatetoProps,mapDispatchTpProps) (App);

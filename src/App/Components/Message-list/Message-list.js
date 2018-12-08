@@ -2,26 +2,32 @@ import React, { Component } from 'react';
 import './shadow.css';
 import Message from './Message/Message.js'
 import {connect} from 'react-redux'
+import {onLoadMessagesForChat} from './../../../store/actions/messageList.js'
 
 
 class MessageList extends Component {
-	constructor() {
-		super();
-		this.addNewMessage.bind(this);
-	}
-
 	addNewMessage(messageGot) {
-		var newMessage = {};
+		var newMessage = [];
 		newMessage['text'] = messageGot.text;
 		newMessage['time'] = messageGot.time;
 		newMessage['spanText'] = messageGot.spanText;
 		newMessage['yourMessage'] = messageGot.yourMessage;
 		newMessage['file'] = messageGot.file;
-		this.props.messagesGot.messages.push(newMessage);
+		newMessage['chat_name'] = messageGot.chat_name;
+
+
+		if(this.props.chat_name == messageGot.chat_name)
+		{	
+			if(this.props.messagesProp.messageToChat[this.props.chat_name] == undefined){
+				this.props.messagesProp.messageToChat[this.props.chat_name] = newMessage;
+			}
+			else{
+				this.props.messagesProp.messageToChat[this.props.chat_name] = [...this.props.messagesProp.messageToChat[this.props.chat_name],
+																				newMessage]
+			}
+			console.log(this.props.messagesProp.messageToChat)
+		}
 	}
-	// onEnterance() {
-	// 	console.log(this.props.id);
-	// }
 
   	render() {
   		let messageGot = { 
@@ -30,30 +36,32 @@ class MessageList extends Component {
   			spanText : this.props.message.spanText,
   			yourMessage : this.props.message.yourMessage,
   			file : this.props.message.file,
+  			chat_name : this.props.message.chat_name,
   		}
   		this.addNewMessage(messageGot)
   			return (
   				<div className="MessageList">
   				{
-  					this.props.messagesGot.messages.map (
+  					this.props.messagesProp.messageToChat[this.props.chat_name].map(
   					(value,index) =>		
 						<Message 
-						key = {index}
-						text = {value.text}
-						time = {value.time}
-						file = {value.file}
-						yourMessage = {value.yourMessage}
-						spanText = {value.spanText}/>
+							key = {index}
+							text = {value.text}
+							time = {value.time}
+							file = {value.file}
+							yourMessage = {value.yourMessage}
+							spanText = {value.spanText}
+							chat_name = {value.chat_name}
+						/>
 					)
 				}
 				</div>
   				)
+	}
 }
-  			
- }
  const mapStatetoProps =(state) => {
  	return {
- 		messagesGot: state.messageList,
+ 		messagesProp: state.messageList,
  		chats:state.chatsList
  	}
  };

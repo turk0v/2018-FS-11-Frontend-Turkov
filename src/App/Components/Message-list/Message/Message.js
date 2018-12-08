@@ -1,5 +1,7 @@
 import './shadow.css'
 import React, { Component } from 'react';
+import sentLabel from './../../../public/sent2.png'
+import crossLabel from './../../../public/cross.png'
 
 
 export default class Message extends Component {
@@ -30,15 +32,25 @@ export default class Message extends Component {
 		}
 	}
 
+	spanTextCheck() {
+		if (this.props.spanText === 'v'){
+			return <img src={sentLabel} className="StatusLabel" alt='yesSent'/>;
+		}
+		else {
+			return <img src={crossLabel} className="StatusLabelNo" alt='noSent'/>;
+		}
+	}
+
 
 	
-	render() {
+	render() 
+	{	
 		return (
 			<div className={(!this.yourMessage) ? "LeftMessageAttributes Message" : "Message"}>
 			{this.attachment(this.file)}
 			<p>{this.text}</p>
 			<time className="TimeLabel">{this.time}</time>
-			<span className="StatusLabel">{this.spanText}</span>
+			{this.spanTextCheck()}
 			</div>
 		);
 	}
