@@ -2,6 +2,7 @@ import './shadow.css'
 import React, { Component } from 'react';
 import pinButton from '../../public/pin.png'
 import EmojiButton from './../Emoji-button/Emoji-button.js'
+import EmojiMenu from './../EmojiMenu/EmojiMenu.js'
 
 export default class MessageForm extends Component {
 	constructor(props) {
@@ -60,6 +61,8 @@ export default class MessageForm extends Component {
 								placeholder='Start typing...'/>
 					</div>
 					<EmojiButton handleMouseDown={this.handleMouseDown}/>
+					<EmojiMenu handleMouseDown={this.handleMouseDown}
+					          menuVisibility={this.state.visible}/>
 					<div className="FormAndPinButton">
 						<label htmlFor="attach_file">
 							<img src = {pinButton} className='PinFileIcon ' alt="pinButton"/>
