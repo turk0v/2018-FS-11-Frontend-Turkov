@@ -10,9 +10,11 @@ export default class MessageForm extends Component {
 		this.state = {
 		            text: '',
 		            file: undefined,
-		            visible: false
+		            visible: false,
+		            emojiVis: true,
 		        };
 		this.handleMouseDown = this.handleMouseDown.bind(this);
+		this.handleEmojiClick = this.handleEmojiClick.bind(this);
 		this.toggleMenu = this.toggleMenu.bind(this);
 		}
 		dispachEv(event) {
@@ -29,20 +31,23 @@ export default class MessageForm extends Component {
 		  }
 		}
 		handleMouseDown(e) {
-		    this.toggleMenu();
-		 
-		    console.log("clicked");
+			this.toggleMenu()
+		    console.log("clicked menu");
 		    e.stopPropagation();
 		  }
-		 
+		handleEmojiClick(e) {
+			console.log('clicked emoji')
+			console.log(this.state.emojiVis)
+			e.stopPropagation();
+		}
 		toggleMenu() {
 		this.setState(
 		  {
 		    visible: !this.state.visible
 		  }
-		);
-		}
-
+		)
+	}
+		
 		updateData(event) {
 			this.setState({text:event.target.value})
 		}
@@ -62,6 +67,7 @@ export default class MessageForm extends Component {
 					</div>
 					<EmojiButton handleMouseDown={this.handleMouseDown}/>
 					<EmojiMenu handleMouseDown={this.handleMouseDown}
+								handleEmojiClick = {this.handleEmojiClick}
 					          menuVisibility={this.state.visible}/>
 					<div className="FormAndPinButton">
 						<label htmlFor="attach_file">

@@ -1,14 +1,14 @@
 #flyoutMenu {
   width: 20vw;
   height: 10vh;
-  background-color: green;
+  background-color: white;
   position: fixed;
   top: 0;
   left: 0;
   transition: transform .3s
               cubic-bezier(0, .52, 0, 1);
   overflow: scroll;
-  z-index: 100;
+  z-index: 1000;
 }
  
 #flyoutMenu.hide {
@@ -18,4 +18,18 @@
 #flyoutMenu.show {
   transform: translate3d(0vw, 0, 0);
   overflow: hidden;
+}
+
+#flyoutMenu h2 a {
+  color: black;
+  margin-left: 15px;
+  text-decoration: none;
+}
+ 
+#flyoutMenu h2 a:hover {
+  text-decoration: underline;
+}
+.emoji {
+  display: flex;
+  flex-flow: column wrap; 
 }

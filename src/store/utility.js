@@ -1,7 +1,5 @@
-const updateObject = (oldObject, newValues) => {
-  return {
-    ...oldObject,
-    ...newValues,
-  }
-};
+const updateObject = (oldObject, newValues) => ({
+  ...oldObject,
+  ...newValues,
+});
 export default updateObject;

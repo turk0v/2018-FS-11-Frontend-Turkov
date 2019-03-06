@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css'
+import EmojiSmile from './EmojiSmile/EmojiSmile.js'
 
 class EmojiMenu extends Component {
 
@@ -7,14 +8,15 @@ class EmojiMenu extends Component {
 		var visibility = "hide";
 		if (this.props.menuVisibility) {
 			visibility = "show";
-			console.log('Its visible')
 		}
 
 
 		return (
 			<div id="flyoutMenu"
 			           onMouseDown={this.props.handleMouseDown} 
-			           className={visibility}></div>
+			           className={visibility}>
+			           <EmojiSmile className='emoji' handleEmojiClick = {this.props.handleEmojiClick}/>
+			           </div>
 		);
 	}
 }

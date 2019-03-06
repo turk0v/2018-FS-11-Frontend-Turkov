@@ -1,13 +1,13 @@
-import * as fakeData from './fakeData.js'
-import {CHATS_GET_MESSAGES} from './../actions/messageList.js'
-import updateObject from './../utility.js'
+import * as fakeData from './fakeData.js';
+import { CHATS_GET_MESSAGES } from '../actions/messageList.js';
+import updateObject from '../utility.js';
 
 const initialStore = {
-	messageToChat:{},
+  messageToChat: {},
 
 };
 
-const reducer = (store=initialStore , action) => {
+const reducer = (store = initialStore, action) => {
 	  switch (action.type) {
     case CHATS_GET_MESSAGES: {
       return updateObject(store, {
@@ -17,6 +17,6 @@ const reducer = (store=initialStore , action) => {
     default:
       return store;
   }
-}
+};
 
 export default reducer;
