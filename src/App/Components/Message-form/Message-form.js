@@ -32,12 +32,10 @@ export default class MessageForm extends Component {
 		}
 		handleMouseDown(e) {
 			this.toggleMenu()
-		    console.log("clicked menu");
 		    e.stopPropagation();
 		  }
 		handleEmojiClick(e) {
-			console.log('clicked emoji')
-			console.log(this.state.emojiVis)
+			console.log(e.target.className)
 			e.stopPropagation();
 		}
 		toggleMenu() {

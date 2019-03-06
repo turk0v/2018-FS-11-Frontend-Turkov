@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './shadow.css';
 import Message from './Message/Message.js'
 import {connect} from 'react-redux'
-import {onLoadMessagesForChat} from './../../../store/actions/messageList.js'
 
 
 class MessageList extends Component {
@@ -16,9 +15,9 @@ class MessageList extends Component {
 		newMessage['chat_name'] = messageGot.chat_name;
 
 
-		if(this.props.chat_name == messageGot.chat_name)
+		if(this.props.chat_name === messageGot.chat_name)
 		{	
-			if(this.props.messagesProp.messageToChat[this.props.chat_name] == undefined){
+			if(this.props.messagesProp.messageToChat[this.props.chat_name] === undefined){
 				this.props.messagesProp.messageToChat[this.props.chat_name] = newMessage;
 			}
 			else{

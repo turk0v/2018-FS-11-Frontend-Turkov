@@ -1,4 +1,3 @@
-import * as fakeData from './fakeData.js';
 import { CHATS_GET_MESSAGES } from '../actions/messageList.js';
 import updateObject from '../utility.js';
 
