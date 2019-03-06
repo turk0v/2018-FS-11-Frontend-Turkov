@@ -12,6 +12,7 @@ export default class MessageForm extends Component {
 		            file: undefined,
 		            visible: false,
 		            emojiVis: true,
+		            emojiClassName: undefined,
 		        };
 		this.handleMouseDown = this.handleMouseDown.bind(this);
 		this.handleEmojiClick = this.handleEmojiClick.bind(this);
@@ -35,7 +36,9 @@ export default class MessageForm extends Component {
 		    e.stopPropagation();
 		  }
 		handleEmojiClick(e) {
-			console.log(e.target.className)
+			this.setState({
+				text:this.state.text.concat(e.target.className)
+			})
 			e.stopPropagation();
 		}
 		toggleMenu() {
