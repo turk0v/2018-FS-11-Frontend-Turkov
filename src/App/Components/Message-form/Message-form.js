@@ -1,14 +1,18 @@
 import './shadow.css'
 import React, { Component } from 'react';
 import pinButton from '../../public/pin.png'
+import EmojiButton from './../Emoji-button/Emoji-button.js'
 
 export default class MessageForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 		            text: '',
-		            file: undefined
+		            file: undefined,
+		            visible: false
 		        };
+		this.handleMouseDown = this.handleMouseDown.bind(this);
+		this.toggleMenu = this.toggleMenu.bind(this);
 		}
 		dispachEv(event) {
 			event.preventDefault();
@@ -22,6 +26,20 @@ export default class MessageForm extends Component {
 		    this.props.dispatcher({text:this.state.text, file:undefined});
 		    this.setState({text:''});
 		  }
+		}
+		handleMouseDown(e) {
+		    this.toggleMenu();
+		 
+		    console.log("clicked");
+		    e.stopPropagation();
+		  }
+		 
+		toggleMenu() {
+		this.setState(
+		  {
+		    visible: !this.state.visible
+		  }
+		);
 		}
 
 		updateData(event) {
@@ -41,6 +59,7 @@ export default class MessageForm extends Component {
 								onChange={this.updateData.bind(this)}
 								placeholder='Start typing...'/>
 					</div>
+					<EmojiButton handleMouseDown={this.handleMouseDown}/>
 					<div className="FormAndPinButton">
 						<label htmlFor="attach_file">
 							<img src = {pinButton} className='PinFileIcon ' alt="pinButton"/>
