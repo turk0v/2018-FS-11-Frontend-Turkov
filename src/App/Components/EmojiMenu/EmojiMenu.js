@@ -15,7 +15,7 @@ class EmojiMenu extends Component {
 			<div id="flyoutMenu"
 			           onMouseDown={this.props.handleMouseDown} 
 			           className={visibility}>
-			           <EmojiSmile className='emoji' handleEmojiClick = {this.props.handleEmojiClick}/>
+			           <EmojiSmile id='emoji' handleEmojiClick = {this.props.handleEmojiClick}/>
 			           </div>
 		);
 	}
