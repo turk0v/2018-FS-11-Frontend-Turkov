@@ -20,15 +20,6 @@
   overflow: hidden;
 }
 
-#flyoutMenu h2 a {
-  color: black;
-  margin-left: 15px;
-  text-decoration: none;
-}
- 
-#flyoutMenu h2 a:hover {
-  text-decoration: underline;
-}
 #emoji {
   display: flex;
   flex-flow: column wrap; 

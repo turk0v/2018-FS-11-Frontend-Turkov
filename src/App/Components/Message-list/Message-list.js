@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './shadow.css';
 import Message from './Message/Message.js'
 import {connect} from 'react-redux'
+import {emojiList} from './../EmojiMenu/EmojiSmile/EmojiSmile.js'
 
 
 class MessageList extends Component {
@@ -27,6 +28,13 @@ class MessageList extends Component {
 			console.log(this.props.messagesProp.messageToChat)
 		}
 	}
+	handleEmojiMessage() {
+		let emojiCodeSubstring = emojiList
+		if(this.props.message.text.includes(emojiCodeSubstring)){
+			this.props.message.emoji_code = emojiCodeSubstring;
+			console.log(this.props.message.emoji_code);
+		}
+	}
 
   	render() {
   		let messageGot = { 
@@ -36,8 +44,10 @@ class MessageList extends Component {
   			yourMessage : this.props.message.yourMessage,
   			file : this.props.message.file,
   			chat_name : this.props.message.chat_name,
+  			emoji_code : this.props.message.emoji_code,
   		}
   		this.addNewMessage(messageGot)
+  		this.handleEmojiMessage()
   			return (
   				<div className="MessageList">
   				{
@@ -51,6 +61,7 @@ class MessageList extends Component {
 							yourMessage = {value.yourMessage}
 							spanText = {value.spanText}
 							chat_name = {value.chat_name}
+							emoji_code = {value.emoji_code}
 						/>
 					)
 				}

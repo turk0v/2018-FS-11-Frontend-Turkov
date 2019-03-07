@@ -16,6 +16,7 @@ class ChatWindow extends Component {
 				spanText : 'v',
 				yourMessage : false,
 				chat_name :this.props.name,
+				emoji_code: undefined,
 			},
 		}
 	}

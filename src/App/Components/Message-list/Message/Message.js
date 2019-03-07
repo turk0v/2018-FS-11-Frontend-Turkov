@@ -40,8 +40,6 @@ export default class Message extends Component {
 			return <img src={crossLabel} className="StatusLabelNo" alt='noSent'/>;
 		}
 	}
-
-
 	
 	render() 
 	{	
