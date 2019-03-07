@@ -2,7 +2,12 @@ import './shadow.css'
 import React, { Component } from 'react';
 import sentLabel from './../../../public/sent2.png'
 import crossLabel from './../../../public/cross.png'
+import {emojiList} from './../../EmojiMenu/EmojiSmile/EmojiSmile.js'
 
+function myReplacer(str,replaceWhat,replaceTo){
+    var re = new RegExp(replaceWhat, 'g');
+    return str.replace(re,replaceTo);
+}
 
 export default class Message extends Component {
 	constructor(props) {
@@ -16,6 +21,7 @@ export default class Message extends Component {
 		this.file = props.file;
 		this.spanText = props.spanText;
 		this.yourMessage = props.yourMessage;
+		this.emojiCode = props.emojiCode;
 	}
 
 	attachment(sendObject) {
@@ -40,13 +46,33 @@ export default class Message extends Component {
 			return <img src={crossLabel} className="StatusLabelNo" alt='noSent'/>;
 		}
 	}
+
+
+	messageToList(string) {
+		console.log('string is '+string)
+		if (this.emojiCode !== []) {
+			return string
+		}
+		else {
+			return string
+		}
+	}
+
+	drawEmojiMessage() {
+		for (let i = 0; i < emojiList.length;i++){
+			this.text = myReplacer(this.text,emojiList[i],`<i className="em em-fist" alt=""></i>`)
+		}
+		console.log("in message " + this.emojiCode)
+		return this.messageToList(this.text)
+	}
+
 	
 	render() 
 	{	
 		return (
 			<div className={(!this.yourMessage) ? "LeftMessageAttributes Message" : "Message"}>
 			{this.attachment(this.file)}
-			<p>{this.text}</p>
+			<p>{this.drawEmojiMessage()}</p>
 			<time className="TimeLabel">{this.time}</time>
 			{this.spanTextCheck()}
 			</div>

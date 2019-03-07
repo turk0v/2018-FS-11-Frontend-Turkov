@@ -12,7 +12,7 @@ export default class MessageForm extends Component {
 		            file: undefined,
 		            visible: false,
 		            emojiVis: true,
-		            emojiClassName: undefined,
+		            emojiClassName: [],
 		        };
 		this.handleMouseDown = this.handleMouseDown.bind(this);
 		this.handleEmojiClick = this.handleEmojiClick.bind(this);

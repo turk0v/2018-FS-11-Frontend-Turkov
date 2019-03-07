@@ -14,6 +14,7 @@ class MessageList extends Component {
 		newMessage['yourMessage'] = messageGot.yourMessage;
 		newMessage['file'] = messageGot.file;
 		newMessage['chat_name'] = messageGot.chat_name;
+		newMessage['emojiCode'] = messageGot.emojiCode;
 
 
 		if(this.props.chat_name === messageGot.chat_name)
@@ -29,11 +30,14 @@ class MessageList extends Component {
 		}
 	}
 	handleEmojiMessage() {
-		let emojiCodeSubstring = emojiList
-		if(this.props.message.text.includes(emojiCodeSubstring)){
-			this.props.message.emoji_code = emojiCodeSubstring;
-			console.log(this.props.message.emoji_code);
+		let emojiCodeList = []
+		for (let i = 0; i <emojiList.length; i ++) {
+			// console.log(emojiList[i])
+			if(this.props.message.text.includes(`${emojiList[i]}`)){
+				emojiCodeList.push(emojiList[i])
+			}	
 		}
+		return emojiCodeList
 	}
 
   	render() {
@@ -44,10 +48,10 @@ class MessageList extends Component {
   			yourMessage : this.props.message.yourMessage,
   			file : this.props.message.file,
   			chat_name : this.props.message.chat_name,
-  			emoji_code : this.props.message.emoji_code,
+  			emojiCode : this.handleEmojiMessage(),
   		}
   		this.addNewMessage(messageGot)
-  		this.handleEmojiMessage()
+  		console.log('in messageGot '+ messageGot.emojiCode)
   			return (
   				<div className="MessageList">
   				{
@@ -61,7 +65,7 @@ class MessageList extends Component {
 							yourMessage = {value.yourMessage}
 							spanText = {value.spanText}
 							chat_name = {value.chat_name}
-							emoji_code = {value.emoji_code}
+							emojiCode = {value.emojiCode}
 						/>
 					)
 				}
