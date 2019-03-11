@@ -44,29 +44,29 @@ export default class Message extends Component {
 
 
 	parseEmoji() {
-		let arrayText = this.text.split('em ')
-		return arrayText
-	}
-	
-	render() 
-	{	
-		const messageParsed = this.parseEmoji().map(element => {
-			for(let j = 0 ; j < emojiList.length;j++) {
-				if (element === emojiList[j]) {
-					let atrib = `em ${element}`
-					return <i className={atrib} key = {Math.random().toString()}></i>
+			let arrayText = this.text.split(" !$%")
+			return arrayText
+		}
+		
+		render() 
+		{	
+			const messageParsed = this.parseEmoji().map(element => {
+				for(let j = 0 ; j < emojiList.length;j++) {
+					if (element === emojiList[j]) {
+						let atrib = `${element}`
+						return <i className={atrib} key = {Math.random().toString()}></i>
+					}
 				}
-			}
-			return <p key = {Math.random().toString()}>{element}</p>
-		})
-		return (
-			<div className={(!this.yourMessage) ? "LeftMessageAttributes Message" : "Message"}>
-			{this.attachment(this.file)}
-			{messageParsed}
-			<time className="TimeLabel">{this.time}</time>
-			{this.spanTextCheck()}
-			</div>
-		);
+				return <p key = {Math.random().toString()}>{element}</p>
+			})
+			return (
+				<div className={(!this.yourMessage) ? "LeftMessageAttributes Message" : "Message"}>
+				{this.attachment(this.file)}
+				{messageParsed}
+				<time className="TimeLabel">{this.time}</time>
+				{this.spanTextCheck()}
+				</div>
+			);
+		}
 	}
-}
 

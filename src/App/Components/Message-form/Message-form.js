@@ -37,7 +37,7 @@ export default class MessageForm extends Component {
 		  }
 		handleEmojiClick(e) {
 			this.setState({
-				text:this.state.text.concat(e.target.className)
+				text:this.state.text.concat(" !$%" + e.target.className+" !$%")
 			})
 			e.stopPropagation();
 		}
