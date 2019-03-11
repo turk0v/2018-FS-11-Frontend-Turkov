@@ -14,7 +14,6 @@ class MessageList extends Component {
 		newMessage['yourMessage'] = messageGot.yourMessage;
 		newMessage['file'] = messageGot.file;
 		newMessage['chat_name'] = messageGot.chat_name;
-		newMessage['emojiCode'] = messageGot.emojiCode;
 
 
 		if(this.props.chat_name === messageGot.chat_name)
@@ -32,7 +31,6 @@ class MessageList extends Component {
 	handleEmojiMessage() {
 		let emojiCodeList = []
 		for (let i = 0; i <emojiList.length; i ++) {
-			// console.log(emojiList[i])
 			if(this.props.message.text.includes(`${emojiList[i]}`)){
 				emojiCodeList.push(emojiList[i])
 			}	
@@ -48,7 +46,6 @@ class MessageList extends Component {
   			yourMessage : this.props.message.yourMessage,
   			file : this.props.message.file,
   			chat_name : this.props.message.chat_name,
-  			emojiCode : this.handleEmojiMessage(),
   		}
   		this.addNewMessage(messageGot)
   		console.log('in messageGot '+ messageGot.emojiCode)
@@ -65,7 +62,6 @@ class MessageList extends Component {
 							yourMessage = {value.yourMessage}
 							spanText = {value.spanText}
 							chat_name = {value.chat_name}
-							emojiCode = {value.emojiCode}
 						/>
 					)
 				}

@@ -4,10 +4,6 @@ import sentLabel from './../../../public/sent2.png'
 import crossLabel from './../../../public/cross.png'
 import {emojiList} from './../../EmojiMenu/EmojiSmile/EmojiSmile.js'
 
-function myReplacer(str,replaceWhat,replaceTo){
-    var re = new RegExp(replaceWhat, 'g');
-    return str.replace(re,replaceTo);
-}
 
 export default class Message extends Component {
 	constructor(props) {
@@ -21,7 +17,6 @@ export default class Message extends Component {
 		this.file = props.file;
 		this.spanText = props.spanText;
 		this.yourMessage = props.yourMessage;
-		this.emojiCode = props.emojiCode;
 	}
 
 	attachment(sendObject) {
@@ -48,27 +43,27 @@ export default class Message extends Component {
 	}
 
 
-	messageToList(string) {
-		console.log('string is '+string)
-		if (this.emojiCode !== []) {
-			return {__html:string};
-		}
-		else {
-			return string
-		}
+	parseEmoji() {
+		let arrayText = this.text.split('em ')
+		return arrayText
 	}
-
-	drawEmojiMessage() {
-		console.log(this.text.split())
-	}
-
 	
 	render() 
 	{	
+		const messageParsed = this.parseEmoji().map(element => {
+			for(let j = 0 ; j < emojiList.length;j++) {
+				if (element === emojiList[j]) {
+					let atrib = `em ${element}`
+					return <i className={atrib}></i>
+					continue;
+				}
+			}
+			return <p>{element}</p>
+		})
 		return (
 			<div className={(!this.yourMessage) ? "LeftMessageAttributes Message" : "Message"}>
 			{this.attachment(this.file)}
-			<p>{this.text}</p>
+			{messageParsed}
 			<time className="TimeLabel">{this.time}</time>
 			{this.spanTextCheck()}
 			</div>
