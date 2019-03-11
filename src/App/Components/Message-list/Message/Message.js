@@ -51,7 +51,7 @@ export default class Message extends Component {
 	messageToList(string) {
 		console.log('string is '+string)
 		if (this.emojiCode !== []) {
-			return string
+			return {__html:string};
 		}
 		else {
 			return string
@@ -59,11 +59,7 @@ export default class Message extends Component {
 	}
 
 	drawEmojiMessage() {
-		for (let i = 0; i < emojiList.length;i++){
-			this.text = myReplacer(this.text,emojiList[i],`<i className="em em-fist" alt=""></i>`)
-		}
-		console.log("in message " + this.emojiCode)
-		return this.messageToList(this.text)
+		console.log(this.text.split())
 	}
 
 	
@@ -72,7 +68,7 @@ export default class Message extends Component {
 		return (
 			<div className={(!this.yourMessage) ? "LeftMessageAttributes Message" : "Message"}>
 			{this.attachment(this.file)}
-			<p>{this.drawEmojiMessage()}</p>
+			<p>{this.text}</p>
 			<time className="TimeLabel">{this.time}</time>
 			{this.spanTextCheck()}
 			</div>
