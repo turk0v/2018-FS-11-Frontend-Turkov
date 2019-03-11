@@ -25,7 +25,6 @@ class MessageList extends Component {
 				this.props.messagesProp.messageToChat[this.props.chat_name] = [...this.props.messagesProp.messageToChat[this.props.chat_name],
 																				newMessage]
 			}
-			console.log(this.props.messagesProp.messageToChat)
 		}
 	}
 	handleEmojiMessage() {
@@ -48,7 +47,6 @@ class MessageList extends Component {
   			chat_name : this.props.message.chat_name,
   		}
   		this.addNewMessage(messageGot)
-  		console.log('in messageGot '+ messageGot.emojiCode)
   			return (
   				<div className="MessageList">
   				{

@@ -10,7 +10,7 @@ class EmojiSmile extends Component {
 		let htmlList = []
 		for (let i = 0;i <emojiList.length; i++) {
 			let result = `em ${emojiList[i]}`
-			let strEmoji = <i className={result}></i>
+			let strEmoji = <i className={result} key={i}></i>
 			htmlList.push(strEmoji)
 		}
 		return htmlList

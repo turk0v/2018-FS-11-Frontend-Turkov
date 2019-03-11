@@ -31,9 +31,9 @@ export default class MessageForm extends Component {
 		    this.setState({text:''});
 		  }
 		}
-		handleMouseDown(e) {
+		handleMouseDown(event) {
 			this.toggleMenu()
-		    e.stopPropagation();
+		    event.stopPropagation();
 		  }
 		handleEmojiClick(e) {
 			this.setState({
@@ -47,7 +47,10 @@ export default class MessageForm extends Component {
 		    visible: !this.state.visible
 		  }
 		)
+
 	}
+
+
 		
 		updateData(event) {
 			this.setState({text:event.target.value})
@@ -66,10 +69,12 @@ export default class MessageForm extends Component {
 								onChange={this.updateData.bind(this)}
 								placeholder='Start typing...'/>
 					</div>
-					<EmojiButton handleMouseDown={this.handleMouseDown}/>
+					<EmojiButton handleMouseDown={this.handleMouseDown}
+					/>
 					<EmojiMenu handleMouseDown={this.handleMouseDown}
 								handleEmojiClick = {this.handleEmojiClick}
-					          menuVisibility={this.state.visible}/>
+					          menuVisibility={this.state.visible}
+					          />
 					<div className="FormAndPinButton">
 						<label htmlFor="attach_file">
 							<img src = {pinButton} className='PinFileIcon ' alt="pinButton"/>

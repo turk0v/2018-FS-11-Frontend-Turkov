@@ -7,7 +7,6 @@
   left: 0;
   transition: transform .3s
               cubic-bezier(0, .52, 0, 1);
-  overflow: scroll;
   z-index: 1000;
 }
  
@@ -17,12 +16,12 @@
  
 #flyoutMenu.show {
   transform: translate3d(0vw, 0, 0);
-  overflow: hidden;
+  overflow: auto;
 }
 
 #emoji {
   display: flex;
-  flex-flow: column wrap; 
+  flex-flow: column wrap;
 }
 #emoji {
   width: 55px;
