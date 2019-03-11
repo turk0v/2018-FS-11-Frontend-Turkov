@@ -45,6 +45,7 @@ export default class Message extends Component {
 
 	parseEmoji() {
 		let arrayText = this.text.split('em ')
+		console.log(arrayText)
 		return arrayText
 	}
 	
@@ -60,6 +61,7 @@ export default class Message extends Component {
 			}
 			return <p>{element}</p>
 		})
+		console.log("I got " + messageParsed)
 		return (
 			<div className={(!this.yourMessage) ? "LeftMessageAttributes Message" : "Message"}>
 			{this.attachment(this.file)}
