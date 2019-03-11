@@ -54,10 +54,10 @@ export default class Message extends Component {
 			for(let j = 0 ; j < emojiList.length;j++) {
 				if (element === emojiList[j]) {
 					let atrib = `em ${element}`
-					return <i className={atrib} key = {j}></i>
+					return <i className={atrib} key = {Math.random().toString()}></i>
 				}
 			}
-			return <p>{element}</p>
+			return <p key = {Math.random().toString()}>{element}</p>
 		})
 		return (
 			<div className={(!this.yourMessage) ? "LeftMessageAttributes Message" : "Message"}>

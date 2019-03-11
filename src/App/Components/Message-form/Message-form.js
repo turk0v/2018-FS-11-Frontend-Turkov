@@ -50,7 +50,6 @@ export default class MessageForm extends Component {
 
 	}
 
-
 		
 		updateData(event) {
 			this.setState({text:event.target.value})
@@ -64,11 +63,13 @@ export default class MessageForm extends Component {
 		render() {
 			return (
 				<div className="MessageForm" onSubmit = {this.dispachEv.bind(this)} onKeyPress={this.handleKeyPress}>
-					<div>
-						<input className="InputForm" value = {this.state.text} 
-								onChange={this.updateData.bind(this)}
-								placeholder='Start typing...'/>
-					</div>
+				<div>
+				  <input className="InputForm" value={this.state.text}
+				    onChange={this.updateData.bind(this)}
+				    placeholder='Start typing...' 
+				    contentEditable={true}/>
+
+				</div>
 					<EmojiButton handleMouseDown={this.handleMouseDown}
 					/>
 					<EmojiMenu handleMouseDown={this.handleMouseDown}
