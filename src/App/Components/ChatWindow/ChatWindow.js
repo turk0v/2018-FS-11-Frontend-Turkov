@@ -15,7 +15,7 @@ class ChatWindow extends Component {
 				time : new Date().toLocaleTimeString(),
 				spanText : 'v',
 				yourMessage : false,
-				chat_name :this.props.name,
+				chat_name : this.props.name,
 			},
 		}
 	}

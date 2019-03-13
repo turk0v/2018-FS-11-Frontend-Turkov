@@ -16,7 +16,6 @@ class App extends Component {
 		render() {
 			let route =(
 			<Switch>
-				<Route exact path="/" component={() => <Auth/>} />
 			</Switch>
 			)
 			if(this.props.user.isAuthorized) {
