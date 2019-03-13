@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './styles.css'
 
-export var emojiList = ['em em-fist','em em-film_projector','em em-female-student','em em-female_fairy','em em-face_vomiting','em em-face_with_head_bandage',
-						'em em-face_with_rolling_eyes','em em-fearful','em em-laughing','em em-leopard','em em-lemon'];
+export var emojiList = ['em cat','em tiger','em monkey','em hand','em redhead','em woman','em police',
+						'em baby','em spok','em tear','em crying','em shoked','em nomouth','em ill'];
 
 class EmojiSmile extends Component {
 
