@@ -15,7 +15,7 @@ class ChatWindow extends Component {
 				time : new Date().toLocaleTimeString(),
 				spanText : 'v',
 				yourMessage : false,
-				chat_name :this.props.name,
+				chat_name : this.props.name,
 			},
 		}
 	}
@@ -29,7 +29,7 @@ class ChatWindow extends Component {
 			chat_name: this.props.name,
 			}
 
-		fetch('http://localhost:8081/message',
+		fetch('http://localhost:8080/message',
 	      {
 	        method: 'POST',
 	        body: newMessage

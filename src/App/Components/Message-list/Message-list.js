@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './shadow.css';
 import Message from './Message/Message.js'
 import {connect} from 'react-redux'
-import {onLoadMessagesForChat} from './../../../store/actions/messageList.js'
+import {emojiList} from './../EmojiMenu/EmojiSmile/EmojiSmile.js'
 
 
 class MessageList extends Component {
@@ -16,17 +16,25 @@ class MessageList extends Component {
 		newMessage['chat_name'] = messageGot.chat_name;
 
 
-		if(this.props.chat_name == messageGot.chat_name)
+		if(this.props.chat_name === messageGot.chat_name)
 		{	
-			if(this.props.messagesProp.messageToChat[this.props.chat_name] == undefined){
+			if(this.props.messagesProp.messageToChat[this.props.chat_name] === undefined){
 				this.props.messagesProp.messageToChat[this.props.chat_name] = newMessage;
 			}
 			else{
 				this.props.messagesProp.messageToChat[this.props.chat_name] = [...this.props.messagesProp.messageToChat[this.props.chat_name],
 																				newMessage]
 			}
-			console.log(this.props.messagesProp.messageToChat)
 		}
+	}
+	handleEmojiMessage() {
+		let emojiCodeList = []
+		for (let i = 0; i <emojiList.length; i ++) {
+			if(this.props.message.text.includes(`${emojiList[i]}`)){
+				emojiCodeList.push(emojiList[i])
+			}	
+		}
+		return emojiCodeList
 	}
 
   	render() {

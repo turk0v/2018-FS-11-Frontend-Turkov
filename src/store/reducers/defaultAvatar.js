@@ -1,11 +1,9 @@
-import basicPhoto from './../../App/public/default.png'
+import basicPhoto from '../../App/public/default.png';
 
 const initialStore = {
-	photo : basicPhoto,
+  photo: basicPhoto,
 };
 
-const reducer = (state=initialStore , action) => {
-	return state
-}
+const reducer = (state = initialStore, action) => state;
 
 export default reducer;

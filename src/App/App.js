@@ -3,7 +3,7 @@ import ChatWindow from './Components/ChatWindow/ChatWindow.js'
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import ChatList from './Components/ChatList/ChatList.js'
 import Aux from '../hoc/Aux/Aux.js'
-import Auth from './Components/Auth/Auth.js'
+// import Auth from './Components/Auth/Auth.js'
 import {connect} from 'react-redux'
 import {authCheck} from './../store/actions/UserActions.js'
 
@@ -16,7 +16,6 @@ class App extends Component {
 		render() {
 			let route =(
 			<Switch>
-				<Route exact path="/" component={() => <Auth/>} />
 			</Switch>
 			)
 			if(this.props.user.isAuthorized) {

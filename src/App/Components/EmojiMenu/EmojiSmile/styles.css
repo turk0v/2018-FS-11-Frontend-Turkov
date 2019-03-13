@@ -1,0 +1,74 @@
+.em {
+	width: 32px;
+	height: 32px;
+}
+
+.cat {
+	background-size: 20px;
+	background: url('../../../public/1f408.png?sprite');
+	}
+
+.tiger {
+	background-size: 20px;
+	background: url('../../../public/1f42f.png?sprite');
+	}
+
+.monkey {
+	background-size: 20px;
+	background: url('../../../public/1f435.png?sprite');
+	}
+
+.hand {
+	background-size: 20px;
+	background: url('../../../public/1f44b-1f3fc.png?sprite');
+	}
+
+.redhead {
+	background-size: 20px;
+	background: url('../../../public/1f468-1f9b0.png?sprite');
+	}
+
+.woman {
+	background-size: 20px;
+	background: url('../../../public/1f469-1f3fd.png?sprite');
+	}
+
+.police {
+	background-size: 20px;
+	background: url('../../../public/1f46e-2642.png?sprite');
+	}
+
+.baby {
+	background-size: 20px;
+	background: url('../../../public/1f476-1f3fc.png?sprite');
+	}
+
+.spok {
+	background-size: 20px;
+	background: url('../../../public/1f596.png?sprite');
+	}
+
+.tear {
+	background-size: 20px;
+	background: url('../../../public/1f622.png?sprite');
+	}
+
+.crying {
+	background-size: 20px;
+	background: url('../../../public/1f62d.png?sprite');
+	}
+
+.shoked {
+	background-size: 20px;
+	background: url('../../../public/1f62e.png?sprite');
+	}
+
+.nomouth {
+	background-size: 20px;
+	background: url('../../../public/1f636.png?sprite');
+	}
+
+.ill {
+	background-size: 20px;
+	background: url('../../../public/1f637.png?sprite');
+	}

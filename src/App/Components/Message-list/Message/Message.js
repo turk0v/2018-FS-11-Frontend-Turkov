@@ -2,6 +2,7 @@ import './shadow.css'
 import React, { Component } from 'react';
 import sentLabel from './../../../public/sent2.png'
 import crossLabel from './../../../public/cross.png'
+import {emojiList} from './../../EmojiMenu/EmojiSmile/EmojiSmile.js'
 
 
 export default class Message extends Component {
@@ -42,17 +43,30 @@ export default class Message extends Component {
 	}
 
 
-	
-	render() 
-	{	
-		return (
-			<div className={(!this.yourMessage) ? "LeftMessageAttributes Message" : "Message"}>
-			{this.attachment(this.file)}
-			<p>{this.text}</p>
-			<time className="TimeLabel">{this.time}</time>
-			{this.spanTextCheck()}
-			</div>
-		);
+	parseEmoji() {
+			let arrayText = this.text.split(" !$%")
+			return arrayText
+		}
+		
+		render() 
+		{	
+			const messageParsed = this.parseEmoji().map(element => {
+				for(let j = 0 ; j < emojiList.length;j++) {
+					if (element === emojiList[j]) {
+						let atrib = `${element}`
+						return <i className={atrib} key = {Math.random().toString()}></i>
+					}
+				}
+				return <p key = {Math.random().toString()}>{element}</p>
+			})
+			return (
+				<div className={(!this.yourMessage) ? "LeftMessageAttributes Message" : "Message"}>
+				{this.attachment(this.file)}
+				{messageParsed}
+				<time className="TimeLabel">{this.time}</time>
+				{this.spanTextCheck()}
+				</div>
+			);
+		}
 	}
-}
 
