@@ -67,7 +67,8 @@ export default class MessageForm extends Component {
 				  <input className="InputForm" value={this.state.text}
 				    onChange={this.updateData.bind(this)}
 				    placeholder='Start typing...' 
-				    contentEditable={true}/>
+				    contentEditable={true}
+				    />
 
 				</div>
 					<EmojiButton handleMouseDown={this.handleMouseDown}
