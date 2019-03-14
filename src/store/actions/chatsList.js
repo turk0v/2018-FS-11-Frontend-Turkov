@@ -23,7 +23,7 @@ export const onLoadChatNames = () => (dispatch) => {
             });
             i++;
           }
-          // console.log('chatNames from action ' + chatNames);
+          console.log('chatNames from action ' + chatNames);
           dispatch(onChatsListLoaded(chatNames));
         });
     });
