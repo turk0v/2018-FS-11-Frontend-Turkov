@@ -29,6 +29,7 @@ class ChatWindow extends Component {
 			chat_name: this.props.name,
 			}
 
+
 		fetch('http://localhost:8080/message',
 	      {
 	        method: 'POST',

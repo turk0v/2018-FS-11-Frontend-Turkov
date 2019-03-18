@@ -1,13 +1,14 @@
 export const CHATS_LIST_LOADED = 'CHATS_LIST_LOADED';
 
 export const onLoadChatNames = () => (dispatch) => {
-  fetch('http://127.0.0.1:8000/', {
+  fetch('http://127.0.0.1:5000/api', {
     method: 'POST',
     body: JSON.stringify({
       jsonrpc: '2.0',
-      method: 'get_chats_request',
+      method: 'get_chats',
+      params:{'user_id':4665},
       headers: {
-        'Access-Control-Allow-Origin': 'http://127.0.0.1:8000/',
+        'Access-Control-Allow-Origin': 'http://127.0.0.1:3000/',
       },
       id: 0,
     }),
@@ -23,7 +24,8 @@ export const onLoadChatNames = () => (dispatch) => {
             });
             i++;
           }
-          console.log('chatNames from action ' + chatNames);
+          console.log(response)
+          console.log(chatNames);
           dispatch(onChatsListLoaded(chatNames));
         });
     });
